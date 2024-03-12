@@ -22,6 +22,15 @@
     font-weight: 500;
 }
 
+/**/
+.s-btn {
+    border-radius: 5px;
+    padding: 7px 15px;
+    border: none;
+    outline: none;
+}
+/**/
+
 .main-layout {
     background-color: var(--bg-light);
     position: fixed;
@@ -83,11 +92,17 @@ hr {
     font-size: 14px;
     font-weight: 700;
     margin-left: 5px;
+    white-space: nowrap;
 }
 
 .nav-item-list {
     padding: 0;
     list-style-type: none;
+}
+
+.nav-item-list li,
+.nav-link {
+    white-space: nowrap;
 }
 
 .nav-icon {
@@ -138,7 +153,8 @@ hr {
 
 .nav-categories {
     overflow-y: auto;
-    max-height: 250px;
+    overflow-x: hidden;
+    max-height: 205px;
 }
 
 .add-cate-action:hover {
@@ -163,17 +179,132 @@ hr {
 }
 
 .nav-bottom {
-    border: 1px solid red;
-    height: 60px;
+    height: 90px;
     width: 100%;
     margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.toggle-nav i {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.navigation .nav-main .nav-contents {
+    opacity: 1;
+    visibility: visible;
+    transition: all .3s ease;
+}
+
+.navigation.close {
+    width: 70px;
+    padding: 15px 10px;
+}
+
+.navigation.close .nav-main .nav-contents {
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s ease;
+}
+
+.navigation.close .logo-wrapper {
+    display: none !important;
+}
+
+.navigation.close .nav-categories {
+    overflow: hidden !important;
+}
+
+.navigation.close .nav-header {
+    justify-content: center !important;
+}
+
+.navigation.close .nav-user-name,
+.navigation.close .nav-bot-setting span {
+    display: none;
+}
+
+.navigation.close .nav-bottom {
+    align-items: center !important;
+}
+
+.navigation.close ~ main {
+    width: calc(100% - 70px);
+}
+
+.nav-bot-user, .nav-bot-setting {
+    cursor: pointer;
+}
+
+.nav-user-img-box {
+    width: 30px;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.nav-user-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nav-user-name, .nav-bot-setting span {
+    white-space: nowrap;
 }
 
 main {
     position: relative;
     width: calc(100% - 300px);
+    padding: 12px 20px;
+    transition: all .3s ease;
+    overflow: hidden;
+    margin-bottom: 15px;
 }
 
+.content-header {
+    height: 60px;
+}
+
+.content-header h2 {
+    font-weight: 600;
+    padding: 0;
+    margin: 0;
+}
+
+.main-contents {
+    padding-top: 15px;
+    overflow-y: auto;
+    height: calc(100% - 25px);
+    border: 1px solid red;
+}
+
+
+.task-infomation-wrapper {
+    height: 100%;
+    width: 350px;
+    padding: 15px 17px;
+    border: 1px solid orange;
+}
+
+.task-inf-header {
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+}
+
+.task-inf-box {
+    display: grid;
+    place-items: center;
+}
+
+.task-inf {
+    border-radius: 8px;
+    background: #f6f5f8;
+    width: 90%;
+    height: 200px;
+    margin-top: 25px;
+}
 
 @media screen and (min-width: 1024px) {
     ::-webkit-scrollbar {
