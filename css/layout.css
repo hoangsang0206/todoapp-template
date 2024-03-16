@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 
 :root {
-    --bg-light: #fff;
-    --bg-light-content: #f4f4f4;
+    --current-bg: var(--bg-light);
+    --current-content-bg: var(--bg-light-content);
+
+    --bg-light: #f6f5f8;
+    --bg-light-content: #fff;
     
     --bg-dark: #161618;
     --bg-dark-content: #18171c;
@@ -10,6 +13,10 @@
     --text-color-white: #fff;
     --text-color-black: #212529ff;
     --text-color-gray: #444444ff;
+
+    --btn-color-p: #0030ff;
+    --btn-color-r: #e30019;
+    --btn-gradient: linear-gradient(90deg, rgba(242,29,216,1) 6%, rgba(131,36,222,1) 44%, rgba(112,38,227,1) 56%, rgba(0,48,255,1) 92%);
 
     --nav-active-bg: #ebebeb;
 }
@@ -32,7 +39,7 @@
 /**/
 
 .main-layout {
-    background-color: var(--bg-light);
+    background-color: var(--current-bg);
     position: fixed;
     top: 0;
     left: 0;
@@ -44,9 +51,9 @@
 }
 
 nav {
-    background-color: var(--bg-light-content);
+    background-color: var(--current-content-bg);
     height: 100vh;
-    width: 300px;
+    width: 270px;
     padding: 15px 17px;
     position: relative;
     transition: all .3s ease;
@@ -127,17 +134,24 @@ hr {
 }
 
 .nav-link.active, .nav-link:hover {
-    background-color: var(--nav-active-bg);
+    background: var(--btn-gradient);
+}
+
+.nav-link.active .nav-icon, 
+.nav-link:hover .nav-icon {
+    fill: #fff;
 }
 
 .nav-link.active .nav-link-text, 
 .nav-link:hover .nav-link-text {
     font-weight: 700;
+    color: #fff;
 }
 
 .nav-link.active .task-count, 
 .nav-link:hover .task-count {
-    background-color: var(--bg-light);
+    background: none;
+    color: #fff;
 }
 
 .nav-link-box, .add-cate-action {
@@ -255,7 +269,7 @@ hr {
 
 main {
     position: relative;
-    width: calc(100% - 300px);
+    width: calc(100% - 270px);
     padding: 12px 20px;
     transition: all .3s ease;
     overflow: hidden;
@@ -272,6 +286,23 @@ main {
     margin: 0;
 }
 
+.add-new-task {
+    background: var(--btn-gradient);
+    background-size: 180%;
+    background-position: center;
+    color: #fff;
+}
+
+.add-new-task:hover,
+.add-new-task:active {
+    background-position: left;
+    transition: all .3s ease;
+}
+
+.add-new-task svg {
+    fill: #fff;
+}
+
 .main-contents {
     padding-top: 15px;
     overflow-y: auto;
@@ -282,15 +313,31 @@ main {
 
 .task-infomation-wrapper {
     height: 100%;
-    width: 350px;
+    width: 300px;
     padding: 15px 17px;
-    border: 1px solid orange;
+    right: 0;
+    top: 0;
+    transition: .3s ease;
+    background: var(--current-content-bg);
 }
 
-.task-inf-header {
+.task-infomation-wrapper.close {
+    right: -100%;
+    transition: .3s ease;
+}
+
+.task-inf-header h4 {
     padding: 0;
     margin: 0;
     font-weight: 600;
+}
+
+.toggle-task-info {
+    cursor: pointer;
+}
+
+.toggle-task-info:hover {
+    fill: #5f31fb;
 }
 
 .task-inf-box {
@@ -300,10 +347,95 @@ main {
 
 .task-inf {
     border-radius: 8px;
-    background: #f6f5f8;
-    width: 90%;
-    height: 200px;
+    background: var(--current-bg);
+    width: 100%;
+    min-height: 200px;
     margin-top: 25px;
+    padding: 10px 15px;
+}
+
+.task-inf hr {
+    border-width: 2px;
+    color: #898787;
+    margin: 15px 0;
+}
+
+.task-inf-name {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.task-inf-description {
+    font-weight: normal;
+}
+
+.task-inf-cate-name {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.task-inf-cate-item span {
+    font-weight: normal;
+    margin-left: 8px;
+}
+
+.sub-task {
+    width: 100%;
+    overflow: hidden;
+}
+
+.add-sub-task {
+    cursor: pointer;
+}
+
+.add-sub-task:hover {
+    fill: #5f31fb;
+}
+
+.sub-task-list, .sub-task-item {
+    width: 100%;
+}
+
+.sub-task-label {
+    width: 100%;
+    border: 2px solid #eee;
+    border-radius: 7px;
+    padding: 6px 10px;
+    overflow: hidden;
+}
+
+.sub-task-label span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical; 
+    font-weight: normal;
+}
+
+input[type="checkbox"] {
+    height: 15px;
+    width: 15px;
+    position: relative;
+}
+
+input[type="checkbox"]::after {
+    font-family: 'Font Awesome 5 Free';
+    content: '\f00c';
+    font-size: 11px;
+    color: #fff;
+    font-weight: 900;
+    position: absolute;
+    top: 1px;
+    left: 3px;
+    bottom: 1px;
+    right: 3px;
+}
+
+input[type="checkbox"]:checked {
+   -webkit-appearance: none;
+   background-color: #03dd03;
+   border-radius: 2px;
 }
 
 @media screen and (min-width: 1024px) {
