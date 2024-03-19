@@ -36,6 +36,30 @@ function hideContentLoading() {
     $('.loading').hide();
 }
 
+function closeTaskList(taskList) {
+    let height = taskList.outerHeight(true);
+    let targetHeight = 0;
+    let duration = 300; //0.3s
+
+    taskList.data('box-height', height);
+
+    taskList.animate({
+        height: targetHeight
+    }, duration)
+
+    return height;
+}
+
+function showTaskList(taskList, height) {
+    let duration = 300; //0.3s
+
+    taskList.animate({
+        height: height
+    }, duration)
+}
+
+//------------------------------------------
+
 $(window).on('load', () => {
     $('.page-loader').removeClass('show');
 })
@@ -61,12 +85,6 @@ $('.toggle-nav').click(() => {
     }
 })
 
-$('.add-new-task').click(() => {
-    $('.task-infomation-wrapper').removeClass('close');
-    setMainWidth();
-    showOverlay();
-})
-
 $('.close-task-info').click(() => {
     $('.task-infomation-wrapper').toggleClass('close');
     setMainWidth();
@@ -83,4 +101,28 @@ $('.overlay').click(() => {
 $('.show-nav-action').click(() => {
     $('.navigation').addClass('show');
     showOverlay();
+})
+
+
+$('.task-box').click(function() {
+    $('.task-box').removeClass('active');
+    $(this).addClass('active');
+    $('.task-infomation-wrapper').removeClass('close');
+    setMainWidth();
+    showOverlay();
+})
+
+$('.toggle-task-list').click(function() {
+    let taskList = $(this).parent().next('.task-list');
+
+    if(!taskList.hasClass('close')) {
+        taskList.addClass('close');
+        closeTaskList(taskList);
+    } else {
+        taskList.removeClass('close');
+        
+        let height = taskList.data('box-height');
+
+        showTaskList(taskList, height);
+    }
 })

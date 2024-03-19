@@ -297,6 +297,7 @@ hr {
     overflow-y: auto;
     overflow-x: hidden;
     max-height: 205px;
+    margin: 0;
 }
 
 .add-cate-action:hover {
@@ -456,15 +457,27 @@ main {
     height: 3px;
     position: absolute;
     left: 0;
-    bottom: -13px;
+    bottom: -15px;
     background: #4b29ec;
 }
 
+.toggle-task-list {
+    cursor: pointer;
+}
+
+.task-list {
+    overflow: hidden;
+}
+
 .task-box {
-    width: 279px;
+    width: 273px;
     height: 200px;
     background-color: var(--bg-light-content);
     border-radius: 10px;
+}
+
+.task-box.active {
+    border: 2px solid #33bce1ab;
 }
 
 
@@ -739,6 +752,10 @@ input[type="checkbox"]:checked {
         left: 0;
     }
 
+    .nav-categories {
+        max-height: 200px;
+    }
+
     main {
         width: 100% !important;
         padding: 10px;
@@ -770,6 +787,10 @@ input[type="checkbox"]:checked {
 @media screen and (min-width: 768px) and (max-width: 1024px) {
     * {
         font-size: 15px;
+    }
+
+    .nav-categories {
+        max-height: 200px;
     }
 
     .sub-task-list {
