@@ -5,33 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo App</title>
 
-     <!-- Bootstrap -->
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
-     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
-     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous" defer></script>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous" defer></script>
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Box Icon -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Iconicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" defer></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" defer></script>
  
-     <!-- Fontawesome -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
-     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
- 
-     <!-- Box Icon -->
-     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
- 
-     <!-- CSS -->
-     <link type="text/css" rel="stylesheet" href="/css/loader.css">
-     <link type="text/css" rel="stylesheet" href="/css/layout.css">
- 
-     <!-- Jquery -->
-     <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
- 
-     <!-- Javascript -->
-     <script type="text/javascript" src="/js/index.js" defer></script>
-     <script type="text/javascript" src="/js/layout.js" defer></script>
+    <!-- CSS -->
+    <link type="text/css" rel="stylesheet" href="/css/loader.css">
+    <link type="text/css" rel="stylesheet" href="/css/layout.css">
+    <link type="text/css" rel="stylesheet" href="/css/index.css">
+
+    <!-- Jquery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="/js/index.js" defer></script>
+    <script type="text/javascript" src="/js/layout.js" defer></script>
 </head>
 <body>
 
-    <div class="page-loader show">
+    <section class="page-loader show">
         <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
             <div class="wheel"></div>
             <div class="hamster">
@@ -50,9 +55,9 @@
             </div>
             <div class="spoke"></div>
         </div>
-    </div>
+    </section>
 
-    <div class="main-layout d-flex">
+    <section class="main-layout d-flex">
         <nav class="d-flex flex-column navigation">
             <div class="nav-header d-flex align-items-center justify-content-between">
                 <div class="logo-wrapper d-flex align-items-center">          
@@ -67,12 +72,22 @@
             <div class="nav-main d-flex flex-column justify-content-between">
                 <div class="nav-contents">
                     <div class="nav-item">
+                        <form action="#" method="#" class="search-form d-flex align-items-center mb-2">
+                            <input type="text" id="search" class="search" placeholder="Tìm kiếm công việc" autocomplete="off">
+                            <button type="submit" class="search-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                                    <path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="nav-item">
                         <div class="nav-item-header">
                             <span>Nhiệm vụ</span>
                         </div>
                         <ul class="nav-item-list">
                             <li>
-                                <a class="nav-link d-flex align-items-center justify-content-between" href="#">
+                                <a class="nav-link d-flex align-items-center justify-content-between active" href="javascript:void(0)">
                                     <div class="nav-link-box d-flex align-items-center">
                                         <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
                                             <path d="M5.282 12.064c-.428.328-.72.609-.875.851-.155.24-.249.498-.279.768h2.679v-.748H5.413c.081-.081.152-.151.212-.201.062-.05.182-.142.361-.27.303-.218.511-.42.626-.604.116-.186.173-.375.173-.578a.898.898 0 0 0-.151-.512.892.892 0 0 0-.412-.341c-.174-.076-.419-.111-.733-.111-.3 0-.537.038-.706.114a.889.889 0 0 0-.396.338c-.094.143-.159.346-.194.604l.894.076c.025-.188.074-.317.147-.394a.375.375 0 0 1 .279-.108c.11 0 .2.035.272.108a.344.344 0 0 1 .108.258.55.55 0 0 1-.108.297c-.074.102-.241.254-.503.453zm.055 6.386a.398.398 0 0 1-.282-.105c-.074-.07-.128-.195-.162-.378L4 18.085c.059.204.142.372.251.506.109.133.248.235.417.306.168.069.399.103.692.103.3 0 .541-.047.725-.14a1 1 0 0 0 .424-.403c.098-.175.146-.354.146-.544a.823.823 0 0 0-.088-.393.708.708 0 0 0-.249-.261 1.015 1.015 0 0 0-.286-.11.943.943 0 0 0 .345-.299.673.673 0 0 0 .113-.383.747.747 0 0 0-.281-.596c-.187-.159-.49-.238-.909-.238-.365 0-.648.072-.847.219-.2.143-.334.353-.404.626l.844.151c.023-.162.067-.274.133-.338s.151-.098.257-.098a.33.33 0 0 1 .241.089c.059.06.087.139.087.238 0 .104-.038.193-.117.27s-.177.112-.293.112a.907.907 0 0 1-.116-.011l-.045.649a1.13 1.13 0 0 1 .289-.056c.132 0 .237.041.313.126.077.082.115.199.115.352 0 .146-.04.266-.119.354a.394.394 0 0 1-.301.134zm.948-10.083V5h-.739a1.47 1.47 0 0 1-.394.523c-.168.142-.404.262-.708.365v.754a2.595 2.595 0 0 0 .937-.48v2.206h.904zM9 6h11v2H9zm0 5h11v2H9zm0 5h11v2H9z"></path>
@@ -80,26 +95,10 @@
         
                                         <span class="nav-link-text">Hôm nay</span>
                                     </div>
-
-                                    <div class="task-count">8</div>
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link d-flex align-items-center justify-content-between" href="#">
-                                    <div class="nav-link-box d-flex align-items-center">
-                                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
-                                            <path d="m20.145 8.27 1.563-1.563-1.414-1.414L18.586 7c-1.05-.63-2.274-1-3.586-1-3.859 0-7 3.14-7 7s3.141 7 7 7 7-3.14 7-7a6.966 6.966 0 0 0-1.855-4.73zM15 18c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"></path>
-                                            <path d="M14 10h2v4h-2zm-1-7h4v2h-4zM3 8h4v2H3zm0 8h4v2H3zm-1-4h3.99v2H2z"></path>
-                                        </svg>
-        
-                                        <span class="nav-link-text">Sắp tới</span>
-                                    </div>
-    
-                                    <div class="task-count">12</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link d-flex align-items-center justify-content-between" href="#">
+                                <a class="nav-link d-flex align-items-center justify-content-between" href="javascript:void(0)">
                                     <div class="nav-link-box d-flex align-items-center">
                                         <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
                                             <path d="M19 4h-3V2h-2v2h-4V2H8v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zM5 20V7h14V6l.002 14H5z"></path><path d="m15.628 12.183-1.8-1.799 1.37-1.371 1.8 1.799zm-7.623 4.018V18h1.799l4.976-4.97-1.799-1.799z"></path>
@@ -110,7 +109,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link d-flex align-items-center justify-content-between" href="#">
+                                <a class="nav-link d-flex align-items-center justify-content-between" href="javascript:void(0)">
                                     <div class="nav-link-box d-flex align-items-center">
                                         <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
                                             <path d="M7 11h2v2H7zm0 4h2v2H7zm4-4h2v2h-2zm0 4h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"></path>
@@ -122,7 +121,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link d-flex align-items-center justify-content-between" href="#">
+                                <a class="nav-link d-flex align-items-center justify-content-between" href="javascript:void(0)">
                                     <div class="nav-link-box d-flex align-items-center">
                                         <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
                                             <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8l8-8V5a2 2 0 0 0-2-2zm-7 16v-7h7l-7 7z"></path>
@@ -143,7 +142,7 @@
                         </div>
                         <ul class="nav-item-list nav-categories">
                             <li>
-                                <a class="nav-link d-flex align-items-center justify-content-between" href="#">
+                                <a class="nav-link d-flex align-items-center justify-content-between" href="javascript:void(0)">
                                     <div class="nav-link-box d-flex align-items-center">
                                         <span class="nav-color-icon" style="background: #e30019;"></span>
         
@@ -154,7 +153,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link d-flex align-items-center justify-content-between" href="#">
+                                <a class="nav-link d-flex align-items-center justify-content-between" href="javascript:void(0)">
                                     <div class="nav-link-box d-flex align-items-center">
                                         <span class="nav-color-icon" style="background: deeppink;"></span>
         
@@ -163,7 +162,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link d-flex align-items-center justify-content-between" href="#">
+                                <a class="nav-link d-flex align-items-center justify-content-between" href="javascript:void(0)">
                                     <div class="nav-link-box d-flex align-items-center">
                                         <span class="nav-color-icon" style="background: orange;"></span>
         
@@ -172,7 +171,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link d-flex align-items-center justify-content-between" href="#">
+                                <a class="nav-link d-flex align-items-center justify-content-between" href="javascript:void(0)">
                                     <div class="nav-link-box d-flex align-items-center">
                                         <span class="nav-color-icon" style="background: orange;"></span>
         
@@ -181,7 +180,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link d-flex align-items-center justify-content-between" href="#">
+                                <a class="nav-link d-flex align-items-center justify-content-between" href="javascript:void(0)">
                                     <div class="nav-link-box d-flex align-items-center">
                                         <span class="nav-color-icon" style="background: orange;"></span>
         
@@ -190,7 +189,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link d-flex align-items-center justify-content-between" href="#">
+                                <a class="nav-link d-flex align-items-center justify-content-between" href="javascript:void(0)">
                                     <div class="nav-link-box d-flex align-items-center">
                                         <span class="nav-color-icon" style="background: orange;"></span>
         
@@ -199,7 +198,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link d-flex align-items-center justify-content-between" href="#">
+                                <a class="nav-link d-flex align-items-center justify-content-between" href="javascript:void(0)">
                                     <div class="nav-link-box d-flex align-items-center">
                                         <span class="nav-color-icon" style="background: orange;"></span>
         
@@ -208,7 +207,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link d-flex align-items-center justify-content-between" href="#">
+                                <a class="nav-link d-flex align-items-center justify-content-between" href="javascript:void(0)">
                                     <div class="nav-link-box d-flex align-items-center">
                                         <span class="nav-color-icon" style="background: orange;"></span>
         
@@ -217,7 +216,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link d-flex align-items-center justify-content-between" href="#">
+                                <a class="nav-link d-flex align-items-center justify-content-between" href="javascript:void(0)">
                                     <div class="nav-link-box d-flex align-items-center">
                                         <span class="nav-color-icon" style="background: orange;"></span>
         
@@ -239,38 +238,216 @@
                 </div>
                 
                 <div class="nav-bottom d-flex flex-column gap-3 pt-2">
-                    <div class="nav-bot-user d-flex align-items-center gap-2">
+                    <a href="login.html" class="nav-bot-user d-flex align-items-center gap-2">
                         <div class="nav-user-img-box">
-                            <img class="nav-user-img" src="/images/S_Logo_3_2_1.png" alt="">
+                            <img class="nav-user-img" src="/images/netbian-anime-2.jpg" alt="">
                         </div>
                         <div class="nav-user-name">
                             <span>Lê Hoàng Sang</span>
                         </div>
-                    </div>
-                    <div class="nav-bot-setting d-flex align-items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);">
+                    </a>
+                    <a href="javascrip:void(0)" class="nav-bot-setting d-flex align-items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24">
                             <path d="M12 16c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.084 0 2 .916 2 2s-.916 2-2 2-2-.916-2-2 .916-2 2-2z"></path>
                             <path d="m2.845 16.136 1 1.73c.531.917 1.809 1.261 2.73.73l.529-.306A8.1 8.1 0 0 0 9 19.402V20c0 1.103.897 2 2 2h2c1.103 0 2-.897 2-2v-.598a8.132 8.132 0 0 0 1.896-1.111l.529.306c.923.53 2.198.188 2.731-.731l.999-1.729a2.001 2.001 0 0 0-.731-2.732l-.505-.292a7.718 7.718 0 0 0 0-2.224l.505-.292a2.002 2.002 0 0 0 .731-2.732l-.999-1.729c-.531-.92-1.808-1.265-2.731-.732l-.529.306A8.1 8.1 0 0 0 15 4.598V4c0-1.103-.897-2-2-2h-2c-1.103 0-2 .897-2 2v.598a8.132 8.132 0 0 0-1.896 1.111l-.529-.306c-.924-.531-2.2-.187-2.731.732l-.999 1.729a2.001 2.001 0 0 0 .731 2.732l.505.292a7.683 7.683 0 0 0 0 2.223l-.505.292a2.003 2.003 0 0 0-.731 2.733zm3.326-2.758A5.703 5.703 0 0 1 6 12c0-.462.058-.926.17-1.378a.999.999 0 0 0-.47-1.108l-1.123-.65.998-1.729 1.145.662a.997.997 0 0 0 1.188-.142 6.071 6.071 0 0 1 2.384-1.399A1 1 0 0 0 11 5.3V4h2v1.3a1 1 0 0 0 .708.956 6.083 6.083 0 0 1 2.384 1.399.999.999 0 0 0 1.188.142l1.144-.661 1 1.729-1.124.649a1 1 0 0 0-.47 1.108c.112.452.17.916.17 1.378 0 .461-.058.925-.171 1.378a1 1 0 0 0 .471 1.108l1.123.649-.998 1.729-1.145-.661a.996.996 0 0 0-1.188.142 6.071 6.071 0 0 1-2.384 1.399A1 1 0 0 0 13 18.7l.002 1.3H11v-1.3a1 1 0 0 0-.708-.956 6.083 6.083 0 0 1-2.384-1.399.992.992 0 0 0-1.188-.141l-1.144.662-1-1.729 1.124-.651a1 1 0 0 0 .471-1.108z"></path>
                         </svg>
                         <span>Cài đặt</span>
-                    </div>
+                    </a>
                 </div>
             </div>
 
         </nav>
 
         <main>
+            <div class="content-header d-flex align-items-center justify-content-between">
+                <h3>Công việc cần làm hôm nay</h3>
+                
+                <button class="add-new-task s-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
+                    </svg>
 
-            <div class="content-header d-flex align-items-center">
-                <h2>Hôm nay</h4>
+                    <span>Thêm mới</span>
+                </button>
             </div>
 
             <div class="main-contents">
-                
+                <div class="task-contents mb-4">
+                    <div class="task-content-header d-flex align-items-center justify-content-between">
+                        <h4>Sắp tới</h4>
+                        <svg class="toggle-task-list me-3" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                            <path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"></path>
+                        </svg>
+                    </div>
+                    <div class="task-list d-flex flex-wrap gap-3 mt-3">
+                        <div class="task-box">
+
+                        </div>
+                        <div class="task-box">
+
+                        </div>
+                        <div class="task-box">
+
+                        </div>
+                        <div class="task-box">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task-contents mb-4">
+                    <div class="task-content-header d-flex align-items-center justify-content-between">
+                        <h4>Hôm nay</h4>
+                        <svg class="toggle-task-list me-3" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                            <path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"></path>
+                        </svg>
+                    </div>
+                    <div class="task-list d-flex flex-wrap gap-3 mt-3">
+                        <div class="task-box">
+
+                        </div>
+                        <div class="task-box">
+
+                        </div>
+                        <div class="task-box">
+
+                        </div>
+                        <div class="task-box">
+
+                        </div>
+                        <div class="task-box">
+
+                        </div>
+                        <div class="task-box">
+
+                        </div>
+                        <div class="task-box">
+
+                        </div>
+                        <div class="task-box">
+
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </main>
-    </div>
+
+        <div class="task-infomation-wrapper d-flex flex-column justify-content-between position-absolute close">
+            <div>
+                <div class="task-inf-header d-flex justify-content-between align-items-center">
+                    <h4>Chi tiết</h4>
+                    <svg class="close-task-info" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
+                        <path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path>
+                    </svg>
+                </div>
+                <div class="task-inf-box">
+                    <div class="task-inf">
+                        <div class="task-inf-name mb-1">Tên công việc</div>
+                        <div class="task-inf-description">
+                            Mô tả công việc
+                        </div>
+                        <hr />
+                        <div class="task-inf-categories">
+                            <div class="task-inf-cate-name mb-1">Danh mục</div>
+                            <div class="task-inf-cate-list d-flex align-items-center flex-wrap column-gap-4">
+                                <div class="task-inf-cate-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                        <path d="M2 7v1l11 4 9-4V7L11 4z"></path>
+                                        <path d="M4 11v4.267c0 1.621 4.001 3.893 9 3.734 4-.126 6.586-1.972 7-3.467.024-.089.037-.178.037-.268V11L13 14l-5-1.667v3.213l-1-.364V12l-3-1z"></path>
+                                    </svg>
+                                    <span>Học tập</span>
+                                </div>
+                                <div class="task-inf-cate-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                        <path d="M2 7v1l11 4 9-4V7L11 4z"></path>
+                                        <path d="M4 11v4.267c0 1.621 4.001 3.893 9 3.734 4-.126 6.586-1.972 7-3.467.024-.089.037-.178.037-.268V11L13 14l-5-1.667v3.213l-1-.364V12l-3-1z"></path>
+                                    </svg>
+                                    <span>Tào lao</span>
+                                </div>
+                                <div class="task-inf-cate-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                        <path d="M2 7v1l11 4 9-4V7L11 4z"></path>
+                                        <path d="M4 11v4.267c0 1.621 4.001 3.893 9 3.734 4-.126 6.586-1.972 7-3.467.024-.089.037-.178.037-.268V11L13 14l-5-1.667v3.213l-1-.364V12l-3-1z"></path>
+                                    </svg>
+                                    <span>Tào lao</span>
+                                </div>                            
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="sub-task mt-5">
+                        <div class="sub-task-header d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="p-0 m-0">Việc cần làm</h5>
+                            <svg class="add-sub-task" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
+                            </svg>
+                        </div>
+                        <div class="sub-task-list d-flex flex-column gap-2">
+                            <div class="sub-task-item">
+                                <label for="sub-task-cbox-1" class="sub-task-label d-flex align-items-center gap-2">                         
+                                    <input type="checkbox" id="sub-task-cbox-1">
+                                    <span>Việc 1</span>
+                                </label>
+                            </div>
+                            <div class="sub-task-item">
+                                <label for="sub-task-cbox-2" class="sub-task-label d-flex align-items-center gap-2">                         
+                                    <input type="checkbox" id="sub-task-cbox-2">
+                                    <span>Việc 2</span>
+                                </label>
+                            </div>
+                            <div class="sub-task-item">
+                                <label for="sub-task-cbox-3" class="sub-task-label d-flex align-items-center gap-2">                         
+                                    <input type="checkbox" id="sub-task-cbox-3">
+                                    <span>Việc 3</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="completed-delete-task d-flex align-items-center justify-content-between">
+                <button class="completed-task-btn s-btn">Hoàn thành</button>
+                <button class="delete-task-btn s-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                        <path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path>
+                        <path d="M9 10h2v8H9zm4 0h2v8h-2z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <nav class="mobile-navigation">
+            <div class="mobile-navigation-rgb"></div>
+            <div class="mb-navigation d-flex align-items-center justify-content-between gap-1">
+                <a href="javascrip:void(0)" class="mb-nav-icon-box">
+                    <ion-icon class="mb-nav-icon active" name="reader-outline"></ion-icon>
+                </a>
+                <a href="javascript:void(0)" class="mb-nav-icon-box show-nav-action">
+                    <ion-icon class="mb-nav-icon" name="grid-outline"></ion-icon>
+                </a>
+                <a href="javascript:void(0)" class="mb-nav-icon-box">
+                    <ion-icon class="mb-nav-icon" name="settings-outline"></ion-icon>
+                </a>
+                <a href="javascript:void(0)" class="mb-nav-icon-box">
+                    <ion-icon class="mb-nav-icon" name="person-outline"></ion-icon>
+                </a>
+            </div>
+        </nav>
+
+        <button class="add-task-floating">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
+            </svg>
+        </button>
+
+        <section class="overlay"></section>
+
+    </section>
+
+    <section class="loading">
+        <span class="loader"></span>
+    </section>
     
 </body>
 </html>
