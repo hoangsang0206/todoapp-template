@@ -14,11 +14,22 @@
     --text-color-black: #212529ff;
     --text-color-gray: #444444ff;
 
-    --btn-color-p: #0030ff;
-    --btn-color-r: #e30019;
+    --btn-color-blue: #0030ff;
+    --btn-color-red: #e30019;
+    --btn-red-hover: #d70019;
+    --btn-color-green: #03dd03;
+    --btn-green-hover: #00c600;
+    --btn-color-purple: #4f46e5;
+    --btn-purple-hover: #3831cb;
+    --btn-normal-hover: #c9c9c9;
     --btn-gradient: linear-gradient(90deg, rgba(242,29,216,1) 6%, rgba(131,36,222,1) 44%, rgba(112,38,227,1) 56%, rgba(0,48,255,1) 92%);
 
     --nav-active-bg: #ebebeb;
+
+    --border-color: #ccc;
+    --border-purple: #4f46e5;
+
+    --overlay-bg: #00000070;
 }
 
 * {
@@ -32,7 +43,7 @@
 /**/
 .s-btn {
     border-radius: 5px;
-    padding: 7px 15px;
+    padding: 7px 12px;
     border: none;
     outline: none;
 }
@@ -40,6 +51,22 @@
 button:disabled {
     cursor: not-allowed;
 }
+
+.input-box input,
+.input-box textarea,
+.input-box select {
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    padding: 5px 15px;
+}
+
+.input-box input:focus,
+.input-box textarea:focus,
+.input-box select:focus {
+    border-color: var(--border-purple);
+}
+
 /**/
 
 /*Loading ---------------------------------- */
@@ -139,7 +166,7 @@ button:disabled {
     right: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #00000070;
+    background-color: var(--overlay-bg);
     z-index: 20;
     display: none;
 }
@@ -202,7 +229,7 @@ hr {
 
 .search-form {
     width: 100%;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     border-radius: 4px;
 }
 
@@ -438,7 +465,7 @@ main {
 .main-contents {
     padding-top: 25px;
     overflow-y: auto;
-    height: calc(100vh - 87px);
+    height: calc(100% - 87px);
 }
 
 .task-content-header {
@@ -468,17 +495,50 @@ main {
 
 .task-list {
     overflow: hidden;
+    padding-bottom: 5px;
 }
 
 .task-box {
     width: 273px;
-    height: 200px;
+    height: 190px;
     background-color: var(--bg-light-content);
     border-radius: 10px;
+    padding: 15px 17px 0 17px;
+    cursor: pointer;
+    box-sizing: border-box;
 }
 
 .task-box.active {
     border: 2px solid #33bce1ab;
+}
+
+.task-box-h-cate {
+    overflow-x: auto;
+}
+
+.task-h-cate-item  {
+    white-space: nowrap;
+}
+
+.task-h-cate-item span {
+    font-size: 15px;
+    white-space: nowrap;
+}
+
+.task-box-name p {
+    font-size: 21px;
+    font-weight: 500;
+    margin: 0 0 7px 0;
+}
+
+.task-box-name span {
+    font-weight: 400;
+}
+
+.task-box-time {
+    border-top: 1px solid var(--border-color);
+    height: 70px;
+    margin-top: 17px;
 }
 
 .task-infomation-wrapper {
@@ -573,7 +633,7 @@ main {
     fill: #5f31fb;
 }
 
-.sub-task-list, .sub-task-item {
+.sub-task-list {
     width: 100%;
 }
 
@@ -584,12 +644,20 @@ main {
     padding-bottom: 10px;
 }
 
-.sub-task-label {
+.sub-task-item {
     width: 100%;
     border: 2px solid #eee;
     border-radius: 7px;
+    padding-right: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.sub-task-label {
+    width: 100%;
     padding: 6px 10px;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .sub-task-label span {
@@ -626,15 +694,85 @@ input[type="checkbox"]:checked {
    border-radius: 2px;
 }
 
+.edit-sub-task-btn {
+    cursor: pointer;
+}
+
+.edit-sub-task {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    display: none !important;
+}
+
+.edit-sub-task.show {
+    display: flex !important;
+}
+
+.edit-sub-task form {
+    width: calc(100% - 25px);
+    height: 100%;
+}
+
+.edit-sub-task input {
+    width: calc(100% - 39px);
+    height: 100%;
+    outline: none;
+    border: none;
+    padding: 0 5px 0 15px;
+}
+
+.edit-sub-task-submit {
+    width: 35px;
+    height: 100%;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    background: none;
+}
+
+.edit-sub-task-submit svg {
+    fill: var(--btn-color-green);
+}
+
+.edit-sub-task-btn:hover svg {
+    fill: var(--btn-color-purple);
+}
+
+.delete-sub-task {
+    width: 20px;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+.delete-sub-task svg {
+    fill: var(--btn-color-red);
+}
+
 .completed-task-btn {
-    background-color: #03dd03;
+    background-color: var(--btn-color-green);
     width: 200px;
     color: #fff;
 }
 
-.delete-task-btn {
-    background-color: #e30019;
+.edit-task-btn {
+    background-color: var(--btn-color-purple);
     color: #fff;
+}
+
+.delete-task-btn {
+    background-color: var(--btn-color-red);
+    color: #fff;
+}
+
+.edit-task-btn svg {
+    fill: #fff;
 }
 
 .delete-task-btn svg {
@@ -642,11 +780,72 @@ input[type="checkbox"]:checked {
 }
 
 .completed-task-btn:hover {
-    background-color: #00c600;
+    background-color: var(--btn-green-hover);
+}
+
+.edit-task-btn:hover {
+    background-color: var(--btn-purple-hover);
 }
 
 .delete-task-btn:hover {
-    background-color: #d70019;
+    background-color: var(--btn-red-hover);
+}
+
+.create-task {
+    width: 900px;
+    height: 100%;
+    padding: 10px 20px;
+    position: absolute;
+    top: 0;
+    right: -200%;   
+    bottom: 0;
+    background-color: var(--bg-light-content);
+    box-shadow: 5px 0 10px #000;
+    z-index: 22;
+}
+
+.create-task.show {
+    right: 0;
+    transition: all .4s ease;
+}
+
+.create-task-header {
+    width: 100%;
+    height: 50px;
+}
+
+.create-task-form {
+    height: calc(100% - 110px);
+    padding: 15px 0;
+    border-top: 1px solid var(--border-color);
+    overflow-y: auto;
+}
+
+.form-left {
+    width: 50%;
+}
+
+.form-right {
+    width: 50%;
+    padding-left: 20px;
+}
+
+.create-task-action {
+    border-top: 1px solid var(--border-color);
+    height: 60px;
+}
+
+.create-task-btn {
+    background-color: var(--btn-color-purple);
+    color: #fff;
+}
+
+.create-task-btn:hover {
+    background-color: var(--btn-purple-hover);
+}
+
+.cancle-create-task:hover {
+    background-color: var(--btn-normal-hover);
 }
 
 .mobile-navigation {
@@ -782,6 +981,10 @@ input[type="checkbox"]:checked {
     .add-task-floating {
         display: block;
     }
+
+    .create-task {
+        width: calc(100% - 10px);
+    }
 }
 
 /* For tablet */
@@ -801,7 +1004,8 @@ input[type="checkbox"]:checked {
 
 @media screen and (min-width: 1024px) {
     ::-webkit-scrollbar {
-        width: 4px;
+        width: 3px;
+        height: 2px;
     }
 
     ::-webkit-scrollbar-thumb {

@@ -37,7 +37,7 @@ function hideContentLoading() {
 }
 
 function closeTaskList(taskList) {
-    let height = taskList.outerHeight(true);
+    let height = taskList.height();
     let targetHeight = 0;
     let duration = 300; //0.3s
 
@@ -125,4 +125,22 @@ $('.toggle-task-list').click(function() {
 
         showTaskList(taskList, height);
     }
+})
+
+$('.edit-sub-task-btn').click(function() {
+    $(this).parent().find('.edit-sub-task').addClass('show');
+    $(this).parent().find('.edit-sub-task input').focus();
+    $(this).parent().find('.edit-sub-task input').val($(this).parent().find('.sub-task-label span').text())
+})
+
+$('.edit-sub-task-submit').click(function() {
+    $(this).closest('.edit-sub-task').removeClass('show');
+})
+
+$('.add-new-task, .add-task-floating').click(() => {
+    $('.create-task').addClass('show');
+})
+
+$('.cancle-create-task').click(() => {
+    $('.create-task').removeClass('show');
 })
