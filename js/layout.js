@@ -144,3 +144,60 @@ $('.add-new-task, .add-task-floating').click(() => {
 $('.cancle-create-task').click(() => {
     $('.create-task').removeClass('show');
 })
+
+
+$('.header-notifications').click(function() {
+    $(this).find('.header-icon').toggleClass('active');
+    $('.notifications-wrapper').toggleClass('show');
+})
+
+//
+function setLightTheme() {
+    $('body').css('--current-bg', 'var(--bg-light)');
+    $('body').css('--current-content-bg', 'var(--bg-light-content)');
+    $('body').css('--current-text-color', 'var(--text-color-black)');
+    $('body').css('--nav-text', 'var(--text-color-gray)');
+    
+    $('.theme-toggle').css('background', '#ebebeb');
+    $('.search-form').css('background', '#fff');
+    $('.logo-text').css('color', 'var(--text-color-gray)');
+}
+
+function setDarkTheme() {
+    $('body').css('--current-bg', 'var(--bg-dark)');
+    $('body').css('--current-content-bg', 'var(--bg-dark-content)');
+    $('body').css('--current-text-color', 'var(--text-color-white)');
+    $('body').css('--nav-text', 'var(--text-color-white)');
+
+    $('.theme-toggle ').css('background', '#242424');
+    $('.search-form').css('background', '#3a3b3c');
+    $('.search-form').css('border', 'none');
+    $('.logo-text').css('color', '#fff');
+}
+
+$(document).ready(function() {
+    let radioThemeLight = $('#light-theme');
+    let radioDarkLight = $('#dark-theme');
+    let lctTheme = localStorage.getItem('theme');
+
+    if(radioThemeLight.prop('checked') || lctTheme == 'light') {
+        setLightTheme();
+    } else if(radioDarkLight.prop('checked') || lctTheme == 'dark') {
+        setDarkTheme();
+    }
+
+    radioThemeLight.change(function() {
+        if($(this).prop('checked')) {
+            setLightTheme();
+            localStorage.setItem('theme', 'light');
+        }
+    })
+
+    radioDarkLight.change(function() {
+        if($(this).prop('checked')) {
+            setDarkTheme();
+            localStorage.setItem('theme', 'dark');
+        }
+    })
+})
+//

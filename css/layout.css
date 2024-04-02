@@ -3,12 +3,14 @@
 :root {
     --current-bg: var(--bg-light);
     --current-content-bg: var(--bg-light-content);
+    --current-text-color: var(--text-color-black);
+    --nav-text: var(--text-color-gray);
 
     --bg-light: #f6f5f8;
     --bg-light-content: #fff;
     
-    --bg-dark: #161618;
-    --bg-dark-content: #18171c;
+    --bg-dark: #18191a;
+    --bg-dark-content: #242526;
 
     --text-color-white: #fff;
     --text-color-black: #212529ff;
@@ -227,28 +229,6 @@ hr {
     overflow-y: auto;
 }
 
-.search-form {
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-#search {
-    outline: none;
-    border: none;
-    border-radius: 5px;
-    padding: 4px 10px;
-    width: calc(100% - 30px);
-    font-size: 15px;
-}
-
-.search-btn {
-    border: none;
-    outline: none;
-    background: none;
-    width: 30px;
-}
-
 .nav-item-header span {
     text-transform: uppercase;
     color: var(--text-color-gray);
@@ -269,7 +249,7 @@ hr {
 }
 
 .nav-icon {
-    fill: var(--text-color-gray);
+    fill: var(--nav-text);
     width: 30px;
 }
 
@@ -295,23 +275,23 @@ hr {
 
 .nav-link.active .nav-icon, 
 .nav-link:hover .nav-icon {
-    fill: #fff;
+    fill: var(--current-text-color);
 }
 
 .nav-link.active .nav-link-text, 
 .nav-link:hover .nav-link-text {
     font-weight: 700;
-    color: #fff;
+    color: var(--current-text-color);
 }
 
 .nav-link.active .task-count, 
 .nav-link:hover .task-count {
     background: none;
-    color: #fff;
+    color: var(--current-text-color);
 }
 
 .nav-link-box, .add-cate-action {
-    color: var(--text-color-gray);
+    color: var(--nav-text);
     gap: 13px;
 }
 
@@ -324,7 +304,7 @@ hr {
 .nav-categories {
     overflow-y: auto;
     overflow-x: hidden;
-    max-height: 205px;
+    max-height: 367px;
     margin: 0;
 }
 
@@ -435,21 +415,150 @@ main {
     margin-bottom: 15px;
 }
 
-.content-header {
-    height: 60px;
+.header-navigation {
+    padding-bottom: 12px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--border-color);
 }
 
-.content-header h2 {
+.header-navigation h2 {
     font-weight: 600;
     padding: 0;
     margin: 0;
+}
+
+.header-navigation a {
+    text-decoration: none;
+    color: #000;
+}
+
+.search-form {
+    width: 600px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+}
+
+#search {
+    width: calc(100% - 30px);
+    padding: 5px 0 5px 20px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background: none;
+    color: var(--nav-text);
+}
+
+.submit-search {
+    width: 40px;
+    padding: 5px;
+    border: none;
+    outline: none;
+    background: none;
+    display: grid;
+    place-items: center;
+    color: var(--nav-text);
+}
+
+.submit-search i {
+    font-size: 20px;
+}
+
+.vertical-break {
+    height: 28px;
+    border-left: 2px solid #ccc;
+}
+
+.theme-toggle {
+    border-radius: 20px;
+    padding: 7px;
+    background: #ebebeb;  
+    box-shadow: inset 0px 3px 7px #00000066, 
+            inset 0px -3px 7px #ffffff66;
+    position: relative; 
+}
+
+.theme-toggle label {
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+.theme-toggle i {
+    font-size: 19px;
+    color: var(--current-text-color);
+    z-index: 2;
+}
+
+#light-theme, #dark-theme {
+    display: none;
+}
+
+.theme-selected {
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    background: linear-gradient(180deg, #ffcc89, #d8860b);
+    z-index: 1;
+    transform: translateX(-3px);
+    transition: all .3s ease-in-out;
+}
+
+#light-theme:checked ~ .theme-selected {
+    transform: translateX(-3px);
+}
+
+#dark-theme:checked ~ .theme-selected {
+    transform: translateX(calc(100% + 5px));
+    background: linear-gradient(180deg, #777, #3a3a3a);
+}
+
+#dark-theme:checked{
+    background: #242424;
+}
+
+.header-settings, .header-account, .header-notifications {
+    cursor: pointer;
+}
+
+.header-icon {
+    font-size: 25px;
+    background: none;
+    background-color: transparent;
+    color: var(--current-text-color);
+}
+
+.header-icon:hover, .header-icon.active {
+    background: var(--btn-gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.notifications-wrapper {
+    width: 350px;
+    height: 600px;
+    background: var(--current-content-bg);
+    position: absolute;
+    right: 10px;
+    top: calc(100% + 3px);
+    border-radius: 6px;
+    box-shadow: -1px 1px 7px #0000007a;
+    display: none;       
+    z-index: 10;
+}
+
+.notifications-wrapper.show {
+    display: block;
 }
 
 .add-new-task {
     background: var(--btn-gradient);
     background-size: 180%;
     background-position: center;
-    color: #fff;
+    color: var(--current-text-color);
 }
 
 .add-new-task:hover,
@@ -459,27 +568,28 @@ main {
 }
 
 .add-new-task svg {
-    fill: #fff;
+    fill: var(--current-text-color);
 }
 
 .main-contents {
-    padding-top: 25px;
+    margin-top: 13px;
     overflow-y: auto;
     height: calc(100% - 87px);
 }
 
-.task-content-header {
+.task-content-header  {
     border-bottom: 3px solid #ddd;
     padding: 10px 0;
 }
 
-.task-content-header h4 {
+.task-content-header  h4 {
     position: relative;
     padding: 0;
     margin: 0;
+    color: var(--current-text-color);
 }
 
-.task-content-header h4:after {
+.task-content-header  h4:after {
     content: '';
     width: 100%;
     height: 3px;
@@ -487,6 +597,10 @@ main {
     left: 0;
     bottom: -15px;
     background: #4b29ec;
+}
+
+.task-content-header svg {
+    fill: var(--current-text-color);
 }
 
 .toggle-task-list {
@@ -501,7 +615,7 @@ main {
 .task-box {
     width: 273px;
     height: 190px;
-    background-color: var(--bg-light-content);
+    background-color: var(--current-content-bg);
     border-radius: 10px;
     padding: 15px 17px 0 17px;
     cursor: pointer;
@@ -520,25 +634,33 @@ main {
     white-space: nowrap;
 }
 
+.task-box svg {
+    fill: var(--current-text-color);
+}
+
 .task-h-cate-item span {
     font-size: 15px;
     white-space: nowrap;
+    color: var(--current-text-color);
 }
 
 .task-box-name p {
     font-size: 21px;
     font-weight: 500;
     margin: 0 0 7px 0;
+    color: var(--current-text-color);
 }
 
 .task-box-name span {
     font-weight: 400;
+    color: var(--current-text-color);
 }
 
 .task-box-time {
     border-top: 1px solid var(--border-color);
     height: 70px;
     margin-top: 17px;
+    color: var(--current-text-color);
 }
 
 .task-infomation-wrapper {
@@ -679,7 +801,7 @@ input[type="checkbox"]::after {
     font-family: 'Font Awesome 5 Free';
     content: '\f00c';
     font-size: 11px;
-    color: #fff;
+    color: var(--current-text-color);
     font-weight: 900;
     position: absolute;
     top: 1px;
@@ -706,7 +828,7 @@ input[type="checkbox"]:checked {
     right: 0;
     bottom: 0;
     left: 0;
-    background: #fff;
+    background: var(--current-text-color);
     display: none !important;
 }
 
@@ -758,25 +880,25 @@ input[type="checkbox"]:checked {
 .completed-task-btn {
     background-color: var(--btn-color-green);
     width: 200px;
-    color: #fff;
+    color: var(--current-text-color);
 }
 
 .edit-task-btn {
     background-color: var(--btn-color-purple);
-    color: #fff;
+    color: var(--current-text-color);
 }
 
 .delete-task-btn {
     background-color: var(--btn-color-red);
-    color: #fff;
+    color: var(--current-text-color);
 }
 
 .edit-task-btn svg {
-    fill: #fff;
+    fill: var(--current-text-color);
 }
 
 .delete-task-btn svg {
-    fill: #fff;
+    fill: var(--current-text-color);
 }
 
 .completed-task-btn:hover {
@@ -837,7 +959,7 @@ input[type="checkbox"]:checked {
 
 .create-task-btn {
     background-color: var(--btn-color-purple);
-    color: #fff;
+    color: var(--current-text-color);
 }
 
 .create-task-btn:hover {
@@ -888,7 +1010,7 @@ input[type="checkbox"]:checked {
 }
 
 .mb-navigation {
-    background: #fff;
+    background: var(--current-content-bg);
     width: 100%;
     height: calc(100% - 1px);
     padding: 0 20px;
@@ -931,7 +1053,7 @@ input[type="checkbox"]:checked {
 }
 
 .add-task-floating svg {
-    fill: #fff;
+    fill: var(--current-text-color);
 }
 
 /* For mobile */
@@ -954,6 +1076,10 @@ input[type="checkbox"]:checked {
 
     .nav-categories {
         max-height: 200px;
+    }
+
+    .nav-bottom {
+        display: flex !important;
     }
 
     main {
