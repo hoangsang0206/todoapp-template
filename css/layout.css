@@ -16,6 +16,7 @@
     --text-color-black: #212529ff;
     --text-color-gray: #444444ff;
 
+    --btn-text-color: var(--text-color-white);
     --btn-color-blue: #0030ff;
     --btn-color-red: #e30019;
     --btn-red-hover: #d70019;
@@ -38,7 +39,7 @@
     padding: 0;
     margin: 0;
     font-family: "Source Sans 3", sans-serif;;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
 }
 
@@ -48,6 +49,8 @@
     padding: 7px 12px;
     border: none;
     outline: none;
+    background: #e7e7e7;
+    box-sizing: border-box;
 }
 
 button:disabled {
@@ -275,19 +278,19 @@ hr {
 
 .nav-link.active .nav-icon, 
 .nav-link:hover .nav-icon {
-    fill: var(--current-text-color);
+    fill: #fff;
 }
 
 .nav-link.active .nav-link-text, 
 .nav-link:hover .nav-link-text {
     font-weight: 700;
-    color: var(--current-text-color);
+    color: #fff;
 }
 
 .nav-link.active .task-count, 
 .nav-link:hover .task-count {
     background: none;
-    color: var(--current-text-color);
+    color: #fff;
 }
 
 .nav-link-box, .add-cate-action {
@@ -304,7 +307,7 @@ hr {
 .nav-categories {
     overflow-y: auto;
     overflow-x: hidden;
-    max-height: 367px;
+    max-height: 327px;
     margin: 0;
 }
 
@@ -330,15 +333,15 @@ hr {
 }
 
 .nav-bottom {
-    height: 90px;
+    height: 80px;
     width: 100%;
-    margin-bottom: 15px;
     overflow: hidden;
 }
 
 .toggle-nav i {
     font-size: 25px;
     cursor: pointer;
+    color: var(--nav-text);
 }
 
 .navigation .nav-main .nav-contents {
@@ -404,12 +407,17 @@ hr {
 
 .nav-user-name, .nav-bot-setting span {
     white-space: nowrap;
+    color: var(--current-text-color);
+}
+
+.nav-bot-setting svg {
+    fill: var(--current-text-color);
 }
 
 main {
     position: relative;
     width: calc(100% - 270px);
-    padding: 12px 20px;
+    padding: 12px 25px;
     transition: all .3s ease;
     overflow: hidden;
     margin-bottom: 15px;
@@ -462,7 +470,7 @@ main {
 }
 
 .submit-search i {
-    font-size: 20px;
+    font-size: 17px;
 }
 
 .vertical-break {
@@ -558,7 +566,7 @@ main {
     background: var(--btn-gradient);
     background-size: 180%;
     background-position: center;
-    color: var(--current-text-color);
+    color: var(--btn-text-color);
 }
 
 .add-new-task:hover,
@@ -567,8 +575,23 @@ main {
     transition: all .3s ease;
 }
 
+.add-new-task span {
+    font-size: 15px;
+}
+
 .add-new-task svg {
-    fill: var(--current-text-color);
+    fill: var(--btn-text-color);
+}
+
+.sort-action, .filter-action, .view-action {
+    color: var(--current-text-color);
+    display: grid;
+    place-items: center;
+    padding: 7px;
+}
+
+.sort-action i, .filter-action i, .view-action i {
+    font-size: 20px;
 }
 
 .main-contents {
@@ -608,12 +631,18 @@ main {
 }
 
 .task-list {
-    overflow: hidden;
+    /* overflow: hidden; */
     padding-bottom: 5px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+
+.navigation.close ~ main .task-list {
+    grid-template-columns: repeat(5, 1fr);
 }
 
 .task-box {
-    width: 273px;
     height: 190px;
     background-color: var(--current-content-bg);
     border-radius: 10px;
@@ -684,10 +713,12 @@ main {
     padding: 0;
     margin: 0;
     font-weight: 600;
+    color: var(--current-text-color)
 }
 
 .close-task-info {
     cursor: pointer;
+    fill: var(--current-text-color)
 }
 
 .close-task-info:hover {
@@ -706,6 +737,14 @@ main {
     min-height: 200px;
     margin-top: 25px;
     padding: 10px 15px;
+}
+
+.task-inf * {
+    color: var(--current-text-color);
+}
+
+.task-inf svg {
+    fill: var(--current-text-color);
 }
 
 .task-inf hr {
@@ -745,6 +784,14 @@ main {
 .sub-task {
     width: 100%;
     overflow: hidden;
+}
+
+.sub-task * {
+    color: var(--current-text-color);
+}
+
+.sub-task svg {
+    fill: var(--current-text-color);
 }
 
 .add-sub-task {
@@ -801,19 +848,24 @@ input[type="checkbox"]::after {
     font-family: 'Font Awesome 5 Free';
     content: '\f00c';
     font-size: 11px;
-    color: var(--current-text-color);
+    color: #fff;
     font-weight: 900;
     position: absolute;
     top: 1px;
     left: 3px;
     bottom: 1px;
     right: 3px;
+    display: none;
 }
 
 input[type="checkbox"]:checked {
    -webkit-appearance: none;
    background-color: #03dd03;
    border-radius: 2px;
+}
+
+input[type="checkbox"]:checked::after {
+    display: block;
 }
 
 .edit-sub-task-btn {
@@ -828,7 +880,7 @@ input[type="checkbox"]:checked {
     right: 0;
     bottom: 0;
     left: 0;
-    background: var(--current-text-color);
+    background: var(--current-bg);
     display: none !important;
 }
 
@@ -847,6 +899,7 @@ input[type="checkbox"]:checked {
     outline: none;
     border: none;
     padding: 0 5px 0 15px;
+    background: var(--current-bg);
 }
 
 .edit-sub-task-submit {
@@ -880,25 +933,25 @@ input[type="checkbox"]:checked {
 .completed-task-btn {
     background-color: var(--btn-color-green);
     width: 200px;
-    color: var(--current-text-color);
+    color: var(--btn-text-color);
 }
 
 .edit-task-btn {
     background-color: var(--btn-color-purple);
-    color: var(--current-text-color);
+    color: var(--btn-text-color);
 }
 
 .delete-task-btn {
     background-color: var(--btn-color-red);
-    color: var(--current-text-color);
+    color: var(--btn-text-color);
 }
 
 .edit-task-btn svg {
-    fill: var(--current-text-color);
+    fill: var(--btn-text-color);
 }
 
 .delete-task-btn svg {
-    fill: var(--current-text-color);
+    fill: var(--btn-text-color);
 }
 
 .completed-task-btn:hover {
@@ -1044,6 +1097,7 @@ input[type="checkbox"]:checked {
     width: 35px;
     aspect-ratio: 1;
     background: var(--btn-gradient);
+    color: var(--text-color-white);
     display: none;
 }
 
@@ -1074,12 +1128,42 @@ input[type="checkbox"]:checked {
         left: 0;
     }
 
+    .navigation hr {
+        display: none !important;
+    }
+
+    .nav-header {
+        margin-bottom: 10px !important;
+    }
+
+    .logo-wrapper {
+        height: 35px;
+    }
+
+    .logo-text {
+        font-size: 30px;
+    }
+
+    .toggle-nav i {
+        font-size: 22px;
+    }
+
     .nav-categories {
         max-height: 200px;
     }
 
+    .nav-link {
+        padding: 5px 10px;
+    }
+
     .nav-bottom {
         display: flex !important;
+        margin-top: 15px !important;
+        gap: 10px !important;
+    }
+
+    .nav-user-img-box {
+        width: 27px;
     }
 
     main {

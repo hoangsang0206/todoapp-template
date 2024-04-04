@@ -61,7 +61,7 @@ body {
     outline: none;
     padding: 0.5rem 0;
     font-size: 0.95em;
-    width: 14.5rem;
+    width: calc(100% - 2.5rem);
     font-weight: 500;
 }
 
@@ -144,4 +144,34 @@ body {
      background-clip: text;
      color: transparent;
      -webkit-text-fill-color: transparent;
+}
+
+/* For mobile */
+@media screen and (max-width: 767px) {
+    * {
+        font-size: 14px;
+    }
+
+    .login-wrapper, .register-wrapper {
+        width: 20rem;
+        max-width: 90%;
+        max-height: 90%;
+    }
+
+    .login-banner, .register-banner {
+        display: none;
+    }
+
+    .login-form-box {
+        padding: 25px !important;
+    }
+
+    .login-form-box, .register-form-box, .login-form, .login-form > div {
+        width: 100%;
+    }
+
+    .ac-input-box {
+        width: 100%;
+    }
+
 }

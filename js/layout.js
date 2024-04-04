@@ -6,12 +6,16 @@ function setMainWidth() {
 
         if(!taskInf.hasClass('close') && !nav.hasClass('close')) {  
             main.css('width', 'calc(100% - 570px)');
+            main.find('.task-list').css('grid-template-columns', 'repeat(3, 1fr)')
         } else if(!nav.hasClass('close') && taskInf.hasClass('close')) {
             main.css('width', 'calc(100% - 270px)');
+            main.find('.task-list').css('grid-template-columns', 'repeat(4, 1fr)')
         } else if(nav.hasClass('close') && !taskInf.hasClass('close')) {
             main.css('width', 'calc(100% - 370px)');
+            main.find('.task-list').css('grid-template-columns', 'repeat(4, 1fr)')
         } else {
             main.css('width', 'calc(100% - 70px)');
+            main.find('.task-list').css('grid-template-columns', 'repeat(5, 1fr)')
         }
     }
 }
@@ -86,7 +90,7 @@ $('.toggle-nav').click(() => {
 })
 
 $('.close-task-info').click(() => {
-    $('.task-infomation-wrapper').toggleClass('close');
+    $('.task-infomation-wrapper').addClass('close');
     setMainWidth();
     hideOverlay();
 })
@@ -161,6 +165,7 @@ function setLightTheme() {
     $('.theme-toggle').css('background', '#ebebeb');
     $('.search-form').css('background', '#fff');
     $('.logo-text').css('color', 'var(--text-color-gray)');
+    $('.sort-action, .filter-action, .view-action').css('background', '#e7e7e7');
 }
 
 function setDarkTheme() {
@@ -173,17 +178,23 @@ function setDarkTheme() {
     $('.search-form').css('background', '#3a3b3c');
     $('.search-form').css('border', 'none');
     $('.logo-text').css('color', '#fff');
+    $('.sort-action, .filter-action, .view-action').css('background', 'var(--bg-dark-content)');
+
 }
 
 $(document).ready(function() {
     let radioThemeLight = $('#light-theme');
-    let radioDarkLight = $('#dark-theme');
+    let radioThemeDark = $('#dark-theme');
     let lctTheme = localStorage.getItem('theme');
 
     if(radioThemeLight.prop('checked') || lctTheme == 'light') {
         setLightTheme();
-    } else if(radioDarkLight.prop('checked') || lctTheme == 'dark') {
+
+        radioThemeLight.prop('checked', true);
+    } else if(radioThemeDark.prop('checked') || lctTheme == 'dark') {
         setDarkTheme();
+
+        radioThemeDark.prop('checked', true);
     }
 
     radioThemeLight.change(function() {
@@ -193,7 +204,7 @@ $(document).ready(function() {
         }
     })
 
-    radioDarkLight.change(function() {
+    radioThemeDark.change(function() {
         if($(this).prop('checked')) {
             setDarkTheme();
             localStorage.setItem('theme', 'dark');

@@ -1,0 +1,44 @@
+.all-statistic, .categories-statistic {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 25px;
+}
+
+.navigation.close ~ main .all-statistic,
+.navigation.close ~ main .categories-statistic {
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.statistic-box {
+    background-color: #8e6dd6;
+    padding: 15px 18px;
+    border-radius: 10px;
+}
+
+.statistic-box * {
+    color: #fff;
+}
+
+.sta-cate-name {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.sta-task-count {
+    font-size: 13px;
+    color: #e7e7e7;
+}
+
+.completed-percent-bar {
+    width: 100%;
+    background: #ffffff98;
+    border-radius: 20px;
+    height: 4px;
+    overflow: hidden;
+}
+
+.completed-percent-bar div {
+    height: 100%;
+    background: #fff;
+    border-radius: 20px;
+}
