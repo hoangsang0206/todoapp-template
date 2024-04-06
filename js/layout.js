@@ -7,6 +7,7 @@ function setMainWidth() {
         if(!taskInf.hasClass('close') && !nav.hasClass('close')) {  
             main.css('width', 'calc(100% - 570px)');
             main.find('.task-list').css('grid-template-columns', 'repeat(3, 1fr)')
+
         } else if(!nav.hasClass('close') && taskInf.hasClass('close')) {
             main.css('width', 'calc(100% - 270px)');
             main.find('.task-list').css('grid-template-columns', 'repeat(4, 1fr)')
@@ -89,6 +90,11 @@ $('.toggle-nav').click(() => {
     }
 })
 
+$('.mb-toggle-nav').click(function (e) { 
+    $('.navigation').removeClass('show');
+    hideOverlay();
+});
+
 $('.close-task-info').click(() => {
     $('.task-infomation-wrapper').addClass('close');
     setMainWidth();
@@ -117,6 +123,8 @@ $('.task-box').click(function() {
 })
 
 $('.toggle-task-list').click(function() {
+    $(this).toggleClass('active');
+
     let taskList = $(this).parent().next('.task-list');
 
     if(!taskList.hasClass('close')) {
@@ -141,7 +149,7 @@ $('.edit-sub-task-submit').click(function() {
     $(this).closest('.edit-sub-task').removeClass('show');
 })
 
-$('.add-new-task, .add-task-floating').click(() => {
+$('.add-new-task, .add-task-floating, .welcome-box button').click(() => {
     $('.create-task').addClass('show');
 })
 
@@ -164,6 +172,7 @@ function setLightTheme() {
     
     $('.theme-toggle').css('background', '#ebebeb');
     $('.search-form').css('background', '#fff');
+    $('.search-form').css('border', '1px solid #ccc');
     $('.logo-text').css('color', 'var(--text-color-gray)');
     $('.sort-action, .filter-action, .view-action').css('background', '#e7e7e7');
 }
@@ -179,7 +188,6 @@ function setDarkTheme() {
     $('.search-form').css('border', 'none');
     $('.logo-text').css('color', '#fff');
     $('.sort-action, .filter-action, .view-action').css('background', 'var(--bg-dark-content)');
-
 }
 
 $(document).ready(function() {

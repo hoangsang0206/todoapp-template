@@ -1,18 +1,67 @@
-.all-statistic, .categories-statistic {
+.welcome-box {
+    background: #92196b;
+    background: linear-gradient(90deg, #92196b 0%, #d31459 100%);
+    height: 80px;
+    border-radius: 6px;
+    padding: 0 20px;
+    overflow: hidden;
+}
+
+.welcome-box img {
+    height: 100%;
+}
+
+.welcome-box h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-color-white);
+}
+
+.welcome-box p {
+    color: var(--text-color-white);
+}
+
+.welcome-box button {
+    border-radius: 20px;
+    border: 1px solid #ffffff4d;
+    padding: 8px 20px;
+    color: #fff;
+    background: none;
+    transition: all .3s ease;
+}
+
+.welcome-box button:hover, .welcome-box button:active {
+    background: #fff;
+    border-color: #fff;
+    color: #000;
+    transition: all .3s ease;
+}
+
+.statistic {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 25px;
 }
 
-.navigation.close ~ main .all-statistic,
-.navigation.close ~ main .categories-statistic {
-    grid-template-columns: repeat(7, 1fr);
+.statistic-box {
+    padding: 15px 18px;
+    border-radius: 6px;
 }
 
-.statistic-box {
-    background-color: #8e6dd6;
-    padding: 15px 18px;
-    border-radius: 10px;
+.statistic-box:first-child {
+    background: #5956d6;
+}
+
+.statistic-box:nth-child(2) {
+    background: #349aff;
+}
+
+.statistic-box:nth-child(3){
+    background: #ecad21;
+}
+
+.statistic-box:nth-child(4){
+    background: #da5d5c;
 }
 
 .statistic-box * {
@@ -26,7 +75,7 @@
 
 .sta-task-count {
     font-size: 13px;
-    color: #e7e7e7;
+    color: #fff;
 }
 
 .completed-percent-bar {
@@ -42,3 +91,36 @@
     background: #fff;
     border-radius: 20px;
 }
+
+.weather-box {
+    width: 370px;
+    height: 450px;
+    background: var(--current-content-bg);
+    border-radius: 6px;
+    padding: 20px;
+}
+
+.today-tasks-box {
+    width: calc(100% - 370px);
+    height: 450px;
+    background-color: var(--current-content-bg);
+    border-radius: 6px;
+    padding: 20px 25px;
+}
+
+.today-tasks-box * {
+    color: var(--current-text-color);
+}
+
+.today-tasks-box h4 {   
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+}
+
+.task-name {
+    font-size: 17px;
+    font-weight: 600;
+}
+
