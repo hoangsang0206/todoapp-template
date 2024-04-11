@@ -1,8 +1,24 @@
 function capitalFirstWord(str) {
     return str.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 }
-function translateToVietnamese(str) {
+function translate(str, targetLan) {
     return new Promise((resolve, reject) => {
+        $.ajax({
+            url: 'https://translation.googleapis.com/language/translate/v2',
+            method: 'get',
+            data: {
+                q: str,
+                target: targetLan,
+                key: 'AIzaSyAQltwtMWmpslXsYUQr5By_OThNkn6Nxbs'
+            },
+            success: (respose) => {
+                console.log(respose);
+                resolve(respose.data.translations[0].translatedText);
+            },
+            error: () => {
+                reject(str);
+            }
+        });
     });
 }
 function updateCurrentTime() {
@@ -27,23 +43,24 @@ function updateCurrentTime() {
 function updateWeather(city) {
     const apiKey = '0292e39f8b40834fb7a306a3a3430ca4';
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
-    return new Promise((resolve, reject) => {
-        $.ajax({
-            url: apiUrl,
-            method: 'get',
-            success: (data) => {
-                $('.temperature').text(Math.floor(data.main.temp - 273.15) + ' °C');
-                $('.weather-description').text(capitalFirstWord(data.weather[0].description));
-                $('.city').text(data.name);
-                console.log(data.weather);
-                console.log(data.main);
-                resolve(true);
-            },
-            error: () => {
-                console.error('Cannot get weather data');
-                reject(false);
-            }
-        });
+    $.ajax({
+        url: apiUrl,
+        method: 'get',
+        success: (data) => {
+            $('.temperature').text(Math.floor(data.main.temp - 273.15) + ' °C');
+            $('.city').text(data.name);
+            translate(capitalFirstWord(data.weather[0].description), 'vi')
+                .then(translatedText => {
+                $('.weather-description').text(translatedText);
+            })
+                .catch(originalText => {
+                $('.weather-description').text(originalText);
+            });
+            hideContentLoading($('.weather-box'));
+        },
+        error: () => {
+            console.error('Cannot get weather data');
+        }
     });
 }
 $(document).ready(() => {
@@ -58,9 +75,7 @@ $(document).ready(() => {
         method: 'get',
         success: (data) => {
             const city = data.city;
-            if (updateWeather(city)) {
-                hideContentLoading($('.weather-box'));
-            }
+            updateWeather(city);
         },
         error: () => {
             console.error('Cannot get location.');

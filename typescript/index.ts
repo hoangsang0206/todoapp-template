@@ -2,9 +2,24 @@ function capitalFirstWord(str: string): string {
     return str.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 }
 
-function translateToVietnamese(str: string): Promise<string> {
+function translate(str: string, targetLan: string): Promise<string> {
     return new Promise<string>((resolve, reject) => {
-        
+        $.ajax({
+            url: 'https://translation.googleapis.com/language/translate/v2',
+            method: 'get',
+            data: {
+                q: str,
+                target: targetLan,
+                key: 'AIzaSyAQltwtMWmpslXsYUQr5By_OThNkn6Nxbs'
+            },
+            success: (respose) => {
+                console.log(respose)
+                resolve(respose.data.translations[0].translatedText);
+            },
+            error: () => {
+                reject(str);
+            }
+        })
     })
 }
 
@@ -30,31 +45,32 @@ function updateCurrentTime(): void {
     $('.clock').text(time);
 }
 
-function updateWeather(city: string): Promise<boolean> {
+function updateWeather(city: string) {
     const apiKey: string = '0292e39f8b40834fb7a306a3a3430ca4';
     // const city: string = 'Ho Chi Minh';
     const apiUrl: string = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
 
-    return new Promise<boolean>((resolve, reject) => {
-        $.ajax({
-            url: apiUrl,
-            method: 'get',
-            success: (data) => {
-                $('.temperature').text(Math.floor(data.main.temp - 273.15) + ' °C');
-                $('.weather-description').text(capitalFirstWord(data.weather[0].description));
-                $('.city').text(data.name);
-                console.log(data.weather)
-                console.log(data.main)
+    $.ajax({
+        url: apiUrl,
+        method: 'get',
+        success: (data) => {
+            $('.temperature').text(Math.floor(data.main.temp - 273.15) + ' °C');
+            $('.city').text(data.name);
 
-                resolve(true);
-            },
-            error: () => { 
-                console.error('Cannot get weather data'); 
-                
-                reject(false);
-            }
-        })  
-    }) 
+            translate(capitalFirstWord(data.weather[0].description), 'vi')
+                .then(translatedText => {
+                    $('.weather-description').text(translatedText);
+                })
+                .catch(originalText => {
+                    $('.weather-description').text(originalText);
+                });
+
+            hideContentLoading($('.weather-box'));
+        },
+        error: () => { 
+            console.error('Cannot get weather data'); 
+        }
+    })  
 }
 
 $(document).ready(() => {
@@ -75,9 +91,7 @@ $(document).ready(() => {
         success: (data) => {
             const city: string = data.city;
 
-            if(updateWeather(city)) {
-                hideContentLoading($('.weather-box'));
-            }
+            updateWeather(city)
         },
         error: () => {
             console.error('Cannot get location.');
