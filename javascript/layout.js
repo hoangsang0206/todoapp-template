@@ -98,7 +98,7 @@ $('.show-nav-action').click(() => {
     $('.navigation').addClass('show');
     showOverlay();
 });
-$('.task-box').click(function () {
+$('.task-box, .task-action.info').click(function () {
     $('.task-box').removeClass('active');
     $(this).addClass('active');
     $('.task-infomation-wrapper').removeClass('close');

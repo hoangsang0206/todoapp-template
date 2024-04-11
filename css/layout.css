@@ -70,6 +70,14 @@
     fill: var(--current-text-color);
 }
 
+.text-nowrap {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
 button:disabled {
     cursor: not-allowed;
 }
@@ -134,7 +142,7 @@ input[type="checkbox"]:checked::after {
     place-items: center;
     background: transparent;
     border-radius: var(--radius);
-    backdrop-filter: blur(25px);
+    backdrop-filter: blur(10px);
 }
 
 .loader {
@@ -491,7 +499,7 @@ main {
 }
 
 .search-form {
-    width: 450px;
+    width: 500px;
     overflow: hidden;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -526,6 +534,12 @@ main {
 .vertical-break {
     height: 28px;
     border-left: 2px solid #ccc;
+}
+
+.horizon-break {
+    width: 100%;
+    border-bottom: 2px solid #fff;
+    margin: 8px 0;
 }
 
 .theme-toggle {
@@ -748,7 +762,7 @@ main {
     width: 40px;
     aspect-ratio: 1;
     display: grid;
-    place-items: center;    
+    place-items: center; 
 }
 
 .task-status i {

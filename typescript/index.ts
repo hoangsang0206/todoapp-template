@@ -13,7 +13,6 @@ function translate(str: string, targetLan: string): Promise<string> {
                 key: 'AIzaSyAQltwtMWmpslXsYUQr5By_OThNkn6Nxbs'
             },
             success: (respose) => {
-                console.log(respose)
                 resolve(respose.data.translations[0].translatedText);
             },
             error: () => {
@@ -45,16 +44,15 @@ function updateCurrentTime(): void {
     $('.clock').text(time);
 }
 
-function updateWeather(city: string) {
+function updateWeather(city: string, country: string) {
     const apiKey: string = '0292e39f8b40834fb7a306a3a3430ca4';
-    // const city: string = 'Ho Chi Minh';
-    const apiUrl: string = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
-
+    const apiUrl: string = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&appid=${apiKey}`;
+    console.log(apiUrl)
     $.ajax({
         url: apiUrl,
         method: 'get',
         success: (data) => {
-            $('.temperature').text(Math.floor(data.main.temp - 273.15) + ' °C');
+            $('.temperature').text(Math.floor(data.main.temp) + ' °C');
             $('.city').text(data.name);
 
             translate(capitalFirstWord(data.weather[0].description), 'vi')
@@ -73,7 +71,7 @@ function updateWeather(city: string) {
     })  
 }
 
-$(document).ready(() => {
+function loadWeatherBox(): void {
     setInterval(updateCurrentTime, 1000);
 
     showContentLoading($('.weather-box'));
@@ -90,12 +88,20 @@ $(document).ready(() => {
         method: 'get',
         success: (data) => {
             const city: string = data.city;
+            const country: string = data.country;
 
-            updateWeather(city)
+            updateWeather(city, country);
         },
         error: () => {
             console.error('Cannot get location.');
         }
     })
-    
+}
+
+$(document).ready(() => {
+    loadWeatherBox();
+})
+
+$('.reload-weather').click(() => {
+    loadWeatherBox();
 })

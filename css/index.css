@@ -115,27 +115,62 @@
     font-size: 25px;
 }
 
-.today-tasks-box {
+.reload-weather {
+    border: none;
+    outline: none;
+    background: #ffffff0e;
+    width: 35px;
+    aspect-ratio: 1;
+    border-radius: var(--radius);
+    backdrop-filter: blur(10px);
+    display: grid;
+    place-items: center;
+}
+
+.reload-weather:hover, .reload-weather:active {
+    background: #ffffff36;
+}
+
+.reload-weather i {
+    font-size: 18px;
+}
+
+.today-tasks {
     width: calc(100% - 370px);
     height: 550px;
 }
 
-.today-tasks-box > div {
+.today-tasks > div {
     overflow-y: auto;
     height: calc(100% - 34px);
 }
 
-.today-tasks-box * {
+.today-tasks * {
     color: var(--current-text-color);
 }
 
-.today-tasks-box h4 {   
+.today-tasks h4 {   
     font-size: 20px;
     font-weight: 600;
     margin: 0;
     padding: 0;
 }
 
-.today-tasks-box svg {
+.today-tasks svg {
     cursor: pointer;
+}
+
+.today-task-box {
+    border-bottom: 1px solid #666;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.td-task-content {
+    width: calc(100% - 220px);
+    overflow: hidden;
+}
+
+.td-task-content .td-task-name-des {
+    max-width: calc(100% - 60px);
 }
