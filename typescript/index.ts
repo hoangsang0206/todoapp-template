@@ -47,7 +47,7 @@ function updateCurrentTime(): void {
 function updateWeather(city: string, country: string) {
     const apiKey: string = '0292e39f8b40834fb7a306a3a3430ca4';
     const apiUrl: string = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&appid=${apiKey}`;
-    console.log(apiUrl)
+
     $.ajax({
         url: apiUrl,
         method: 'get',

@@ -6,8 +6,8 @@
     --current-text-color: var(--text-color-black);
     --nav-text: var(--text-color-gray);
 
-    /* --bg-light: #f6f5f8; */
-    --bg-light: #f5f5f5;
+    /* --bg-light: #f5f5f5; */
+    --bg-light: #E3F4F4;
     --bg-light-content: #fff;
     
     --bg-dark: #18191a;
@@ -31,11 +31,13 @@
 
     --nav-active-bg: #ebebeb;
 
-    --border-color: #ccc;
+    --border-color: #ddd;
     --border-purple: #4f46e5;
     --radius: 6px;
 
     --overlay-bg: #00000070;
+
+    --blur: blur(8px);
 }
 
 * {
@@ -68,6 +70,21 @@
 
 .content-box svg {
     fill: var(--current-text-color);
+}
+
+.content-box .header-text {   
+    font-size: 21px;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content-box .header-text > span {
+    font-size: 21px;
+    font-weight: 600;
 }
 
 .text-nowrap {
@@ -142,28 +159,28 @@ input[type="checkbox"]:checked::after {
     place-items: center;
     background: transparent;
     border-radius: var(--radius);
-    backdrop-filter: blur(10px);
+    backdrop-filter: var(--blur);
 }
 
 .loader {
     width: 40px;
     height: 40px;
-    border: 4px solid var(--current-text-color);
+    border: 4px solid #fff;
     border-bottom-color: transparent;
     border-radius: 50%;
     display: inline-block;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
-    }
+}
 
-    @keyframes rotation {
+@keyframes rotation {
     0% {
         transform: rotate(0deg);
     }
     100% {
         transform: rotate(360deg);
     }
-    } 
+} 
 /* -- */
 
 .overlay {
@@ -175,6 +192,7 @@ input[type="checkbox"]:checked::after {
     width: 100vw;
     height: 100vh;
     background-color: var(--overlay-bg);
+    backdrop-filter: var(--blur);
     z-index: 20;
     display: none;
 }
@@ -501,7 +519,7 @@ main {
 .search-form {
     width: 500px;
     overflow: hidden;
-    border: 1px solid #ccc;
+    border: none !important;
     border-radius: 5px;
     background: #fff;
 }
@@ -533,7 +551,7 @@ main {
 
 .vertical-break {
     height: 28px;
-    border-left: 2px solid #ccc;
+    border-left: 2px solid var(--border-color);
 }
 
 .horizon-break {
@@ -796,6 +814,7 @@ main {
     width: 30px;
     display: grid;
     place-items: center;
+    cursor: pointer;
 }
 
 .task-action svg {
@@ -1202,7 +1221,7 @@ main {
     z-index: -1;
 }
 
-@keyframe spin {
+@keyframes spin {
     100% {
         transform: rotate(360deg)
     }
@@ -1223,11 +1242,11 @@ main {
 .mb-nav-icon-box {
     display: grid;
     place-items: center;
-    color: #000;
+    color: var(--current-text-color);
 }
 
 .mb-nav-icon {
-    font-size: 28px;
+    font-size: 25px;
 }
 
 .mb-nav-icon.active {
@@ -1243,7 +1262,7 @@ main {
     width: 35px;
     aspect-ratio: 1;
     background: var(--btn-gradient);
-    color: var(--text-color-white);
+    color: #fff;
     display: none;
 }
 
@@ -1254,6 +1273,61 @@ main {
 
 .add-task-floating svg {
     fill: var(--text-color-white);
+}
+
+.note-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 20px;
+}
+
+.note-box {
+    border-radius: var(--radius);
+    padding: 17px 20px;
+    background: #3cbeff5e;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    height: 230px;
+}
+
+.note-box * {
+    color: #000;
+    fill: #000;
+}
+
+.note-content {
+    height: calc(100% - 30px);
+}
+
+.note-time {
+    font-size: 13px;
+    height: 20px;
+}
+
+.add-note-btn {
+    background: var(--btn-gradient);
+    background-size: 180%;
+    background-position: center;
+    color: var(--btn-text-color);
+    padding: 7px 12px;
+}
+
+.add-note-btn span {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.add-note-btn svg {
+    fill: #fff;
+}
+
+.add-note-btn:hover,
+.add-note-btn:active {
+    background-position: left;
+    transition: all .3s ease;
 }
 
 /* For mobile */
