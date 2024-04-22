@@ -1,0 +1,6 @@
+.setting-page {
+    border-radius: var(--radius);
+    background: var(--bg-light-content);
+    width: 100%;
+    height: 635px;
+}

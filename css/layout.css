@@ -27,7 +27,9 @@
     --btn-color-purple: #4f46e5;
     --btn-purple-hover: #3831cb;
     --btn-normal-hover: #c9c9c9;
-    --btn-gradient: linear-gradient(90deg, rgba(242,29,216,1) 6%, rgba(131,36,222,1) 44%, rgba(112,38,227,1) 56%, rgba(0,48,255,1) 92%);
+    --gradient-color-1: linear-gradient(90deg, rgba(242,29,216,1) 6%, rgba(131,36,222,1) 44%, rgba(112,38,227,1) 56%, rgba(0,48,255,1) 92%);
+    --gradient-color-2: linear-gradient(90deg, rgba(110,226,245,1) 0%, rgba(100,84,240,1) 100%);
+
 
     --nav-active-bg: #ebebeb;
 
@@ -291,7 +293,7 @@ hr {
 }
 
 .nav-link.active, .nav-link:hover {
-    background: var(--btn-gradient);
+    background: var(--gradient-color-1);
 }
 
 .nav-link.active .nav-icon, 
@@ -387,7 +389,7 @@ hr {
     font-size: 27px;
     cursor: pointer;
     color: transparent;
-    background: var(--btn-gradient);
+    background: var(--gradient-color-1);
     background-size: 170%;
     background-position: right;
     background-clip: text;
@@ -621,7 +623,7 @@ main {
 }
 
 .header-icon:hover, .header-icon.active {
-    background: var(--btn-gradient);
+    background: var(--gradient-color-1);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -645,7 +647,7 @@ main {
 }
 
 .add-new-task {
-    background: var(--btn-gradient);
+    background: var(--gradient-color-1);
     background-size: 180%;
     background-position: center;
     color: var(--btn-text-color);
@@ -684,8 +686,8 @@ main {
 .main-contents {
     margin-top: 13px;
     overflow-y: auto;
-    max-height: calc(100% - 60px);
-    padding-bottom: 20px;
+    height: calc(100% - 60px);
+    padding-bottom: 10px;
     position: relative;
 }
 
@@ -1170,6 +1172,48 @@ main {
     z-index: 2;
 }
 
+.view-action-box {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 3px);
+    box-shadow: 0px 2px 5px #0000008f;
+    border-radius: var(--radius);
+    background: var(--current-content-bg);
+    display: none;
+    overflow: hidden;
+}
+
+.view-action-box.show {
+    display: block;
+}
+
+.sort-selection label {
+    white-space: nowrap;
+    width: 100%;
+    padding: 7px 15px;
+    color: var(--current-text-color);
+    cursor: pointer;
+}
+
+.view-selection label {
+    color: var(--current-text-color);
+    padding: 8px;
+    cursor: pointer;
+}
+
+.sort-selection label i,
+.view-selection label i {
+    font-size: 22px;
+}
+
+.sort-selection label:hover,
+.sort-selection label.active,
+.view-selection label:hover,
+.view-selection label.active {
+    background: var(--gradient-color-2);
+    color: #fff;
+}
+
 .create-task-action {
     border-top: 1px solid var(--border-color);
     height: 60px;
@@ -1261,7 +1305,7 @@ main {
     border-radius: 50%;
     width: 35px;
     aspect-ratio: 1;
-    background: var(--btn-gradient);
+    background: var(--gradient-color-1);
     color: #fff;
     display: none;
 }
@@ -1284,7 +1328,7 @@ main {
 .note-box {
     border-radius: var(--radius);
     padding: 17px 20px;
-    background: #3cbeff5e;
+    background: #5cc1f4;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -1307,7 +1351,7 @@ main {
 }
 
 .add-note-btn {
-    background: var(--btn-gradient);
+    background: var(--gradient-color-1);
     background-size: 180%;
     background-position: center;
     color: var(--btn-text-color);
@@ -1400,9 +1444,9 @@ main {
         display: none;
     }
 
-    .main-contents {
+    /* .main-contents {
         height: calc(100% - 130px);
-    }
+    } */
 
     .sub-task-list {
         max-height: 265px;

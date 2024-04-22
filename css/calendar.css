@@ -1,0 +1,7 @@
+.calendar-wrapper {
+    height: 100%;
+    background: var(--current-content-bg);
+    padding: 20px;
+    border-radius: var(--radius);
+    overflow-y: auto;
+}
