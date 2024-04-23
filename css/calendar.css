@@ -5,3 +5,79 @@
     border-radius: var(--radius);
     overflow-y: auto;
 }
+
+.c-type-selection {
+    background: none;
+    height: 39px;
+    padding: 0 14px;
+    font-weight: 600;
+}
+
+.c-type-selection:hover {
+    background: #eee;
+}
+
+.c-type-selection.active {
+    background: #000;
+    color: #fff;
+}
+
+.current-day {
+    white-space: nowrap;
+    color: var(--current-text-color);
+    font-weight: 600;
+    font-size: 22px;
+    line-height: normal;
+}
+
+.c-next-prev button {
+    height: 39px;
+    padding: 0 14px;
+    font-weight: 600;
+}
+
+.c-today {
+    background: none;
+}
+
+.c-today:hover {
+    background: #000;
+    color: #fff;
+}
+
+.c-vbreak {
+    height: 35px;
+    background: #ccc;
+    width: 2px;
+    border-radius: 5px;
+    margin: 0 8px;
+}
+
+.calendar-main {
+    height: calc(100% - 55px);
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.calendar-main tr {
+    width: 100%;
+}
+
+.calendar-main tr td {
+    width: calc(100% / 7);
+}
+
+.c-main td {
+    border: 1px solid #ccc;
+}
+
+.c-days-of-month {
+    height: 40px;
+}
+
+.c-days-of-month td {
+    color: var(--curent-text-color);
+    font-weight: 600;
+    font-size: 17px;
+    text-align: center;
+}

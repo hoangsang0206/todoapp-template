@@ -4,7 +4,7 @@ function setMainWidth(): void {
     if(window.innerWidth >= 1024) {
         let main: any = $('main');
         let taskInf: any = $('.task-infomation-wrapper');
-        let nav: any = $('.navigation');
+        let nav: any = $('.sidebar');
 
         if(!taskInf.hasClass('close') && !nav.hasClass('close')) {  
             main.css('width', 'calc(100% - 570px)');
@@ -24,11 +24,7 @@ function setMainWidth(): void {
 }
 
 function showOverlay(): void {
-    if(window.innerWidth < 1024) {
-        $('.overlay').show();
-    } else {
-        $('.overlay').hide();
-    }
+    $('.overlay').show();
 }
 
 function hideOverlay(): void {
@@ -69,6 +65,158 @@ function showTaskList(taskList: any, height: number): void {
     }, duration)
 }
 
+function showActionForm(form_wrapper: any): void {
+    form_wrapper.addClass('show');
+    form_wrapper.find('.form-box').addClass('show');
+
+    $('input[type="datetime-local"]').val(() => {
+        return new Date(new Date().getTime() + 60 * 60000).toLocaleString('sv').replace(' ', 'T');
+    });
+}
+
+function hideActionForm(form_wrapper: any): void {
+    form_wrapper.removeClass('show');
+    form_wrapper.find('.form-box').removeClass('show');
+    form_wrapper.find('.custom-select').removeClass('open');
+}
+
+//Custom select ---
+function loadSelectData(): any[] {
+    // let dataList: string[];
+    // $.ajax({
+    //     url: '',
+    //     type: 'Get',
+    //     data: {
+
+    //     },
+    //     success: (response) => {
+
+    //     },
+    //     error: (error) => {
+    //         console.error(error);
+    //     }
+    // })
+
+    // return dataList;
+
+    const categories = [
+        {
+            id: 'category1',
+            cateName: 'Category 1',
+            iconColor: '#e30019',
+        },
+        {
+            id: 'category2',
+            cateName: 'Category 2',
+            iconColor: '#e30019',
+        },
+        {
+            id: 'category3',
+            cateName: 'Category 3',
+            iconColor: '#e30019',
+        },
+        {
+            id: 'category4',
+            cateName: 'Category 4',
+            iconColor: '#e30019',
+        },
+        {
+            id: 'category5',
+            cateName: 'Category 5',
+            iconColor: '#e30019',
+        },
+        {
+            id: 'category6',
+            cateName: 'Category 6',
+            iconColor: '#e30019',
+        }
+    ]
+
+    return categories;
+}
+
+function loadSelectElements(data: any[]): void {
+    $('.select-options-box').empty();
+    data.map(item => {
+        let element = `<div class="select-option" data-value="${item?.id}" data-name="${item?.cateName}" data-color="${item?.iconColor}">
+                        <span class="nav-color-icon" style="background: ${item?.iconColor};"></span>
+                        <span class="select opt-name">${item?.cateName}</span>
+                    </div>`;
+
+        $('.select-options-box').append(element);
+    })
+}
+
+loadSelectElements(loadSelectData());
+
+function getSelectedElements() {
+    return $('.selected-option').toArray();
+}
+
+function getSelectedValue() {
+
+}
+
+function checkExistItemSelected(value: string): boolean {
+    for(let element of getSelectedElements()) {
+        if($(element).data('value') === value) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+$('.show-select-options i').click(function() {
+    $(this).closest('.custom-select').toggleClass('open');
+})
+
+$(document).click(function(event) {
+    if(!$(event.target).closest('.custom-select').length) {
+        $('.custom-select').removeClass('open');
+    }
+})
+
+$(document).on('click', '.select-option', function() {
+    let value: string = $(this).data('value');
+
+    if(checkExistItemSelected(value)) {
+        return;
+    }
+
+    let itemName: string = $(this).data('name');
+    let colorData: string = $(this).data('color');
+    let selectedEl: string = `<div class="selected-option" data-value="${value}" data-name="${itemName}" data-color="${colorData}">
+                                <div class="selected-opt-content">
+                                    <span class="nav-color-icon" style="background: ${colorData};"></span>
+                                    <span class="selected-opt-name">${itemName}</span>
+                                </div>
+                                <div class="delete-selected-opt">
+                                    <i class='bx bx-x'></i>
+                                </div>
+                            </div>`;
+
+    $('.selected-box').append(selectedEl);
+})
+
+$(document).on('click', '.delete-selected-opt', function() {
+    let parentEl: any = $(this).closest('.selected-option');
+    parentEl.remove();
+})
+
+$('#search-option').keyup(function() {
+    const searchText = $(this).val();
+    const categories = loadSelectData();
+
+    if(searchText.length > 0) {
+        let filteredCategories = categories.filter(category => category?.cateName.toLowerCase().includes(searchText.toLowerCase()));
+        loadSelectElements(filteredCategories);
+    } else {
+        loadSelectElements(categories);
+    }
+})
+
+
 //------------------------------------------
 
 $(window).on('load', () => {
@@ -77,27 +225,22 @@ $(window).on('load', () => {
 
 $(window).resize(() => {
     if(window.innerWidth < 768) {
-        $('.navigation').removeClass('close');
+        $('.sidebar').removeClass('close');
     }
-})
-
-$('.nav-link').click(function() {
-    $('.nav-link').removeClass('active');
-    $(this).addClass('active');
 })
 
 $('.toggle-nav').click(() => {
     if(window.innerWidth < 768) {
-        $('.navigation').removeClass('show');
+        $('.sidebar').removeClass('show');
         hideOverlay();
     } else {
-        $('.navigation').toggleClass('close');
+        $('.sidebar').toggleClass('close');
         setMainWidth();
     }
 })
 
 $('.mb-toggle-nav').click(function () { 
-    $('.navigation').removeClass('show');
+    $('.sidebar').removeClass('show');
     hideOverlay();
 });
 
@@ -108,14 +251,15 @@ $('.close-task-info').click(() => {
 })
 
 $('.overlay').click(() => {
-    $('.navigation').removeClass('show');
+    $('.sidebar').removeClass('show');
     $('.task-infomation-wrapper').addClass('close');
+    hideActionForm($('.form-full-wrapper'));
     hideOverlay();
 })
 
 //Click to show navigation (mobile)
 $('.show-nav-action').click(() => {
-    $('.navigation').addClass('show');
+    $('.sidebar').addClass('show');
     showOverlay();
 })
 
@@ -125,7 +269,9 @@ $('.task-box, .task-action.info').click(function() {
     $(this).addClass('active');
     $('.task-infomation-wrapper').removeClass('close');
     setMainWidth();
-    showOverlay();
+    if(window.innerWidth < 1024) {
+        showOverlay();
+    }
 })
 
 $('.toggle-task-list').click(function() {
@@ -156,11 +302,13 @@ $('.edit-sub-task-submit').click(function() {
 })
 
 $('.add-new-task, .add-task-floating, .welcome-box button').click(() => {
-    $('.create-task').addClass('show');
+    showActionForm($('.create-task-wrapper'));
+    showOverlay();
 })
 
 $('.cancle-create-task').click(() => {
-    $('.create-task').removeClass('show');
+    hideActionForm($('.create-task-wrapper'));
+    hideOverlay();
 })
 
 
@@ -229,4 +377,11 @@ $(document).ready(function() {
 $('.sort-filter-box button').click(function() {
     $('.view-action-box').not($(this).next('.view-action-box')).removeClass('show');
     $(this).next('.view-action-box').toggleClass('show');
+})
+
+$('.form-full-wrapper').click(function(event) {
+    if(!$(event.target).closest('.form-box').length) {
+        hideActionForm($(this));
+        hideOverlay();
+    }
 })
