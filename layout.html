@@ -23,7 +23,7 @@
 </head>
 <body>
 
-    <section class="page-loader show">
+    <section class="page-loader">
         <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
             <div class="wheel"></div>
             <div class="hamster">
@@ -149,8 +149,6 @@
             
                                         <span class="nav-link-text">Công việc</span>
                                     </div>
-            
-                                    <div class="task-count">12</div>
                                 </a>
                             </li>
                             <li>
@@ -179,7 +177,7 @@
                 <div class="nav-bottom d-flex flex-column gap-3 pt-2 d-none">
                     <a href="login.html" class="nav-bot-user d-flex align-items-center gap-2">
                         <div class="nav-user-img-box">
-                            <img class="nav-user-img" src="/images/netbian-anime-2.jpg" alt="">
+                            <img class="nav-user-img" src="/images/user-no-image.jpg" alt="">
                         </div>
                         <div class="nav-user-name">
                             <span>Lê Hoàng Sang</span>
@@ -194,7 +192,6 @@
                     </a>
                 </div>
             </div>
-            
         </nav>
 
         <main>
@@ -243,7 +240,7 @@
                     <div class="header-account">
                         <a href="javascript:void(0)" class="d-flex align-items-center justify-content-center">
                             <div class="nav-user-img-box">
-                                <img class="nav-user-img" src="/images/netbian-anime-2.jpg" alt="">
+                                <img class="nav-user-img" src="/images/user-no-image.jpg" alt="">
                             </div>
                         </a>
                     </div>
@@ -255,23 +252,70 @@
                 </div>
             </section>
 
-            <section class="d-flex align-items-center gap-2 mt-3">
-                <button class="sort-action s-btn">
-                    <i class='bx bx-sort-alt-2'></i>
-                </button>
-
-                <button class="filter-action s-btn">
-                    <i class='bx bx-filter' ></i>
-                </button>
-
-                <button class="view-action s-btn">
-                    <i class='bx bxs-grid-alt'></i>
-                    <i class='bx bx-list-ul d-none'></i>
-                </button>
-            </section>
-
             <section class="main-contents">
-                
+                <div class="sort-filter-box d-flex align-items-center gap-2">
+                    <div class="position-relative">
+                        <button class="sort-action s-btn">
+                            <i class='bx bx-sort-alt-2'></i>
+                        </button>
+
+                        <div class="view-action-box">
+                            <div class="sort-selection-box">
+                                <div class="sort-selection">
+                                    <input type="radio" name="sort-by" id="sort-asc" hidden>
+                                    <label class="d-flex align-items-center gap-2" for="sort-asc">
+                                        <i class='bx bx-up-arrow-alt'></i>
+                                        <span>Tăng dần theo thời gian</span>
+                                    </label>
+                                </div>
+                                <div class="sort-selection">
+                                    <input type="radio" name="sort-by" id="sort-desc" hidden>
+                                    <label class="d-flex align-items-center gap-2" for="sort-desc">
+                                        <i class='bx bx-down-arrow-alt'></i>
+                                        <span>Giảm dần theo thời gian</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="position-relative">
+                        <button class="filter-action s-btn">
+                            <i class='bx bx-filter' ></i>
+                        </button>
+
+                        <div class="view-action-box">
+                            Filter box
+                        </div>
+                    </div>
+    
+                    <div class="position-relative">
+                        <button class="view-action s-btn">
+                            <i class='bx bxs-grid-alt'></i>
+                            <i class='bx bx-list-ul d-none'></i>
+                        </button>
+
+                        <div class="view-action-box">
+                            <div class="view-selection-box d-flex">
+                                <div class="view-selection">
+                                    <input type="radio" name="view-type" id="view-list" hidden>
+                                    <label for="view-list" class="d-flex align-items-center justify-content-center">
+                                        <i class='bx bx-list-ul'></i>
+                                    </label>
+                                </div>
+                                <div class="view-selection">
+                                    <input type="radio" name="view-type" id="view-grid" hidden>
+                                    <label for="view-grid" class="d-flex align-items-center justify-content-center">
+                                        <i class='bx bxs-grid-alt' ></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
             </section>
 
         </main>
@@ -425,13 +469,13 @@
             </div>
         </section>
 
-        <section class="create-task-wrapper form-full-wrapper">
+        <section class="create-task-wrapper form-container">
             <section class="create-task form-box">
                 <div class="form-box-header">
                     <h4>Thêm công việc mới</h4>
                 </div>
-                <div class="create-task-form">
-                    <form action="#" method="#">
+                <form class="form-main" action="#" method="#">
+                    <div>
                         <div class="input-box d-flex flex-column">
                             <label for="task-name">Tên công việc</label>
                             <input type="text" name="task-name" id="task-name" autocomplete="off" required>
@@ -442,7 +486,7 @@
                         </div>
                         <div class="d-flex flex-column mt-3">
                             <label for="task-categories">Danh mục</label>
-                            <div class="custom-select" id="task-categories" required>
+                            <div class="custom-select">
                                 <div class="select-box">
                                     <input type="text" name="select-categories" hidden>
                                     <div class="selected-box">
@@ -470,17 +514,54 @@
                             <label for="task-time">Thời gian hoàn thành</label>
                             <input type="datetime-local" name="task-time" id="task-time" required>
                         </div>
-                    </form>
-                </div>
-                <div class="create-task-action d-flex gap-3 align-items-center">
-                    <button class="s-btn create-task-btn">
-                        Thêm mới
-                    </button>
-                    <button class="s-btn cancle-create-task">
-                        Hủy
-                    </button>
-                </div>
+                    </div>
+
+                    <div class="form-action d-flex gap-3 align-items-center">
+                        <button type="submit" class="s-btn submit-form-btn sm-create-task">
+                            Thêm mới
+                        </button>
+                        <button type="button" class="s-btn close-form-btn">
+                            Hủy
+                        </button>
+                    </div>
+
+                </form>
+                
             </section>
+        </section>
+
+        <section class="create-category-wrapper form-container">
+            <section class="create-category form-box">
+                <div class="form-box-header">
+                    <h4>Thêm danh mục</h4>
+                </div>
+                <form class="form-main" action="#" method="#">
+                    <div>
+                        <div class="input-box d-flex flex-column">
+                            <label for="cate-name">Tên danh mục</label>
+                            <input type="text" name="cate-name" id="cate-name" autocomplete="off" required>
+                        </div>
+                        <div class="input-box d-flex flex-column mt-3">
+                            <label for="cate-icon">Màu icon</label>
+                            <input type="color" value="#e30019" name="cate-icon" id="cate-icon" />
+                        </div>
+                    </div>
+
+                    <div class="form-action d-flex gap-3 align-items-center">
+                        <button type="submit" class="s-btn submit-form-btn sm-create-task">
+                            Thêm mới
+                        </button>
+                        <button type="button" class="s-btn close-form-btn">
+                            Hủy
+                        </button>
+                    </div>
+
+                </form>
+            </section>
+        </section>
+
+        <section class="create-note-wrapper">
+            
         </section>
 
         <button class="add-task-floating">
@@ -513,8 +594,6 @@
         <section class="overlay"></section>
 
     </section>
-
-
     
     <!-- Jquery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>

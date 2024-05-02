@@ -57,7 +57,7 @@ function showActionForm(form_wrapper) {
     form_wrapper.addClass('show');
     form_wrapper.find('.form-box').addClass('show');
     $('input[type="datetime-local"]').val(() => {
-        return new Date(new Date().getTime() + 60 * 60000).toLocaleString('sv').replace(' ', 'T');
+        return new Date(new Date().getTime() + 60 * 60000).toLocaleString('sv', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
     });
 }
 function hideActionForm(form_wrapper) {
@@ -236,9 +236,16 @@ $('.add-new-task, .add-task-floating, .welcome-box button').click(() => {
     showActionForm($('.create-task-wrapper'));
     showOverlay();
 });
-$('.cancle-create-task').click(() => {
-    hideActionForm($('.create-task-wrapper'));
+$('.close-form-btn').click(function () {
+    hideActionForm($(this).closest('.form-container'));
     hideOverlay();
+});
+$('.add-cate-header, .add-cate-action').click(() => {
+    showActionForm($('.create-category-wrapper'));
+    showOverlay();
+});
+$('.add-note-btn').click(() => {
+    showOverlay();
 });
 $('.header-notifications').click(function () {
     $(this).find('.header-icon').toggleClass('active');
@@ -248,7 +255,9 @@ function setLightTheme() {
     $('body').css('--current-bg', 'var(--bg-light)');
     $('body').css('--current-content-bg', 'var(--bg-light-content)');
     $('body').css('--current-text-color', 'var(--text-color-black)');
+    $('body').css('--current-task-background', 'var(--task-background-light)');
     $('body').css('--nav-text', 'var(--text-color-gray)');
+    $('body').css('--border-input', '#ddd');
     $('.theme-toggle').css('background', '#ebebeb');
     $('.search-form').css('background', '#fff');
     $('.logo-text').css('color', 'var(--text-color-gray)');
@@ -258,7 +267,9 @@ function setDarkTheme() {
     $('body').css('--current-bg', 'var(--bg-dark)');
     $('body').css('--current-content-bg', 'var(--bg-dark-content)');
     $('body').css('--current-text-color', 'var(--text-color-white)');
+    $('body').css('--current-task-background', 'var(--task-background-dark)');
     $('body').css('--nav-text', 'var(--text-color-white)');
+    $('body').css('--border-input', 'var(--border-input-dark)');
     $('.theme-toggle ').css('background', '#242424');
     $('.search-form').css('background', '#3a3b3c');
     $('.search-form').css('border', 'none');
@@ -294,7 +305,7 @@ $('.sort-filter-box button').click(function () {
     $('.view-action-box').not($(this).next('.view-action-box')).removeClass('show');
     $(this).next('.view-action-box').toggleClass('show');
 });
-$('.form-full-wrapper').click(function (event) {
+$('.form-container').click(function (event) {
     if (!$(event.target).closest('.form-box').length) {
         hideActionForm($(this));
         hideOverlay();
