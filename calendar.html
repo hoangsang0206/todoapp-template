@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo App</title>
 
-    <!-- Bootstrap -->
+    <!-- Bootsdivap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
@@ -261,17 +261,16 @@
 
             <section class="main-contents">
                 <div class="calendar-wrapper">
-                    <div class="calendar-header d-flex align-items-center justify-content-between mb-3">
+                    <div class="calendar-header d-flex align-items-center justify-content-between">
                         <div class="c-type-select d-flex gap-2">
-                            <button class="s-btn c-type-selection c-month active">Tháng</button>
-                            <button class="s-btn c-type-selection c-week">Tuần</button>
-                            <button class="s-btn c-type-selection c-day">Ngày</button>
+                            <button class="s-btn c-type-selection active">Tháng</button>
+                            <button class="s-btn c-type-selection">Tuần</button>
                         </div>
                         <div class="current-day">
                             Thứ 6, 23/04/2024
                         </div>
                         <div class="c-next-prev d-flex align-items-center gap-1">
-                            <button class="s-btn c-today">Hôm nay</button>
+                            <button class="s-btn btn-today">Hôm nay</button>
                             <div class="c-vbreak"></div>
                             <button class="s-btn prev-month">
                                 <i class="fa-solid fa-chevron-left"></i>
@@ -282,54 +281,53 @@
                         </div>
                     </div>
 
-                    <table class="calendar-main">
-                        <tr class="c-days-of-month">
-                            <td>Chủ Nhật</td>
-                            <td>Thứ Hai</td>
-                            <td>Thứ Ba</td>
-                            <td>Thứ Tư</td>
-                            <td>Thứ Năm</td>
-                            <td>Thứ Sáu</td>
-                            <td>Thứ Bảy</td>
-                        </tr>
+                    <div class="calendar-main">
+                        <div class="c-days-of-month">
+                            <div>Chủ Nhật</div>
+                            <div>Thứ Hai</div>
+                            <div>Thứ Ba</div>
+                            <div>Thứ Tư</div>
+                            <div>Thứ Năm</div>
+                            <div>Thứ Sáu</div>
+                            <div>Thứ Bảy</div>
+                        </div>
 
-                        <tr class="c-main">
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tr>
-                        <tr class="c-main">
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tr>
-                        <tr class="c-main">
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tr>
-                        <tr class="c-main">
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tr>
-                    </table>
+                        <div class="c-main">
+                            <div class="c-days">
+                                <div class="c-day">2</div>
+                                <div class="c-day">3</div>
+                                <div class="c-day">1</div>
+                                <div class="c-day">4</div>
+                                <div class="c-day">5</div>
+                                <div class="c-day">6</div>
+                                <div class="c-day">7</div>
+                                <div class="c-day current">8</div>
+                                <div class="c-day">9</div>
+                                <div class="c-day">10</div>
+                                <div class="c-day">11</div>
+                                <div class="c-day">12</div>
+                                <div class="c-day">13</div>
+                                <div class="c-day">14</div>
+                                <div class="c-day">15</div>
+                                <div class="c-day">16</div>
+                                <div class="c-day">17</div>
+                                <div class="c-day">18</div>
+                                <div class="c-day">19</div>
+                                <div class="c-day">20</div>
+                                <div class="c-day">21</div>
+                                <div class="c-day">22</div>
+                                <div class="c-day">23</div>
+                                <div class="c-day">24</div>
+                                <div class="c-day">25</div>
+                                <div class="c-day">26</div>
+                                <div class="c-day">27</div>
+                                <div class="c-day">28</div>
+                                <div class="c-day">29</div>
+                                <div class="c-day">30</div>
+                                <div class="c-day">31</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -619,8 +617,8 @@
     <script type="text/javascript" src="/javascript/layout.js" defer></script>
     <script type="text/javascript" src="/javascript/calendar.js" defer></script>
     
-    <!-- Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+    <!-- Bootsdivap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootsdivap.bundle.min.js" 
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous" defer></script>
 
     <!-- Iconicons -->

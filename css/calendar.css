@@ -6,6 +6,11 @@
     overflow-y: auto;
 }
 
+.calendar-header {
+    height: 40px;
+    margin-bottom: 15px;
+}
+
 .c-type-selection {
     background: none;
     height: 39px;
@@ -36,11 +41,15 @@
     font-weight: 600;
 }
 
-.c-today {
+.c-next-prev button:hover, .c-next-prev button:active {
+    background: #ddd;
+}
+
+.btn-today {
     background: none;
 }
 
-.c-today:hover {
+.btn-today:hover {
     background: #000;
     color: #fff;
 }
@@ -56,28 +65,42 @@
 .calendar-main {
     height: calc(100% - 55px);
     width: 100%;
-    border-collapse: collapse;
-}
-
-.calendar-main tr {
-    width: 100%;
-}
-
-.calendar-main tr td {
-    width: calc(100% / 7);
-}
-
-.c-main td {
-    border: 1px solid #ccc;
 }
 
 .c-days-of-month {
+    display: grid;
     height: 40px;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    border-bottom: 1px solid #ddd;
 }
 
-.c-days-of-month td {
-    color: var(--curent-text-color);
+.c-main {
+    height: calc(100% - 40px);
+    overflow-y: auto;
+}
+
+.c-days-of-month > div {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    font-size: 18px;
     font-weight: 600;
-    font-size: 17px;
-    text-align: center;
+}
+
+.c-days {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.c-day {
+    display: grid;
+    place-items: end start;
+    height: 125px;
+    padding: 10px;
+    border: 1px solid #dddddd;
+}
+
+.c-day.current {
+    font-size: 20px;
+    font-weight: 700;
 }
